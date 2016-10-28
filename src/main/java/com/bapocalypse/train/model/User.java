@@ -8,14 +8,14 @@ package com.bapocalypse.train.model;
  */
 public class User {
     private int uid;
-    private String username;
-    private String password;
-    private String name;
-    private int IDType;
-    private String ID;
-    private String email;
-    private String telephone;
-    private String passenger;
+    private String username; //用户名
+    private String password; //密码
+    private String name;     //真实姓名
+    private int IDType;      //证件类型
+    private String ID;       //证件号
+    private String email;    //邮箱
+    private String telephone; //电话
+    private String passenger; //乘客类型
 
     public int getUid() {
         return uid;

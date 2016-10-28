@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace 命名空间，作用就是对sql进行分类化管理-->
-<mapper namespace="user">
-    <select id="findUserByUId" parameterType="int" resultType="com.bapocalypse.train.model.User">
+<mapper namespace="com.bapocalypse.train.dao.UserDao">
+    <select id="findUserByUid" parameterType="int" resultType="com.bapocalypse.train.model.User">
         SELECT * FROM user WHERE uid=#{uid}
     </select>
 </mapper>
