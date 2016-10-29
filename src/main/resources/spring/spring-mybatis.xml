@@ -31,12 +31,13 @@
         <property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml" />
         <!-- 数据源 -->
         <property name="dataSource" ref="dataSource" />
+        <!-- 扫描所有mapper配置文件-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
 
     <!-- spring与mybatis整合配置，扫描所有dao -->
-    <bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.bapocalypse.train.dao.UserDao"/>
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.bapocalypse.train.dao"/>
     </bean>
 
 </beans>
