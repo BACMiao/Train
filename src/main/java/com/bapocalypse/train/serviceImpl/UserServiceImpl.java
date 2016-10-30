@@ -22,6 +22,11 @@ public class UserServiceImpl implements UserService{
         return userDao.findUserByUid(uid);
     }
 
+    @Override
+    public boolean insertUser(User user) throws Exception {
+        return userDao.insertUser(user);
+    }
+
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;

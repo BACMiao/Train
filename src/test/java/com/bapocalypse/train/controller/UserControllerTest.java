@@ -1,5 +1,6 @@
-package com.bapocalypse.train;
+package com.bapocalypse.train.controller;
 
+import com.bapocalypse.train.BaseControllerTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,19 +21,27 @@ import org.springframework.web.context.WebApplicationContext;
  */
 public class UserControllerTest extends BaseControllerTest {
     @Autowired
-    private WebApplicationContext wac;
+    private WebApplicationContext wac;  //注入web环境的ApplicationContext容器
 
     private MockMvc mockMvc;
 
     @Before
     public void setUp() {
+        //创建一个MockMvc进行测试
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
     @Test
     public void testGetUser() throws Exception {
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/user/usersView/1"))
+        /*
+        * MockMvcRequestBuilders.get("/user/usersView/1"))构造一个请求
+        * ResultActions.andExpect添加执行完成后的断言
+        * ResultActions.andDo添加一个结果处理器，表示要对结果做点什么事情
+        * ResultActions.andReturn表示执行完成后返回相应的结果
+        * */
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/user/1"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("user"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
         Assert.assertNotNull(result.getModelAndView().getModel().get("user"));

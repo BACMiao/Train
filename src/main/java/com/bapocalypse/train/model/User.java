@@ -15,7 +15,7 @@ public class User {
     private String ID;       //证件号
     private String email;    //邮箱
     private String telephone; //电话
-    private String passenger; //乘客类型
+    private int passenger; //乘客类型
 
     public int getUid() {
         return uid;
@@ -81,11 +81,11 @@ public class User {
         this.telephone = telephone;
     }
 
-    public String getPassenger() {
+    public int getPassenger() {
         return passenger;
     }
 
-    public void setPassenger(String passenger) {
+    public void setPassenger(int passenger) {
         this.passenger = passenger;
     }
 }

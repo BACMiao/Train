@@ -7,4 +7,9 @@
     <select id="findUserByUid" parameterType="int" resultType="user">
         SELECT * FROM user WHERE uid=#{uid}
     </select>
+    
+    <insert id="insertUser" parameterType="user">
+        INSERT INTO user(uid, username, password, name, IDType, ID, email, telephone, passenger)
+        VALUES (#{uid}, #{username}, #{password}, #{name}, #{IDType}, #{ID}, #{email}, #{telephone}, #{passenger})
+    </insert>
 </mapper>
