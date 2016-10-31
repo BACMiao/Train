@@ -17,4 +17,8 @@
         UPDATE user SET password=#{password}, email=#{email}, telephone=#{telephone}, passenger=#{passenger}
         WHERE uid=#{uid}
     </update>
+    
+    <delete id="deleteUserByUid" parameterType="int">
+        DELETE FROM user WHERE uid=#{uid}
+    </delete>
 </mapper>

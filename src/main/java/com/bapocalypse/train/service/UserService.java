@@ -12,4 +12,5 @@ public interface UserService {
     User findUserByUid(Integer uid) throws Exception;
     boolean insertUser(User user) throws Exception;
     boolean updateUser(User user) throws Exception;
+    boolean deleteUserByUid(Integer uid) throws Exception;
 }

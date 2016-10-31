@@ -14,4 +14,5 @@ public interface UserDao {
     User findUserByUid(int uid) throws Exception;
     boolean insertUser(User user) throws Exception;
     boolean updateUser(User user) throws Exception;
+    boolean deleteUserByUid(int uid) throws Exception;
 }

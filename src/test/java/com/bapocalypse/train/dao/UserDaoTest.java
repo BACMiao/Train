@@ -57,4 +57,9 @@ public class UserDaoTest extends BaseJunit4Test {
         Assert.assertTrue(userDao.updateUser(user));
     }
 
+    @Test
+    public void testDeleteUserByUid() throws Exception{
+        Assert.assertTrue(userDao.deleteUserByUid(1));
+    }
+
 }

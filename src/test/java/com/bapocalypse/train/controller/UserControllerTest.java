@@ -76,4 +76,13 @@ public class UserControllerTest extends BaseControllerTest {
                 .andReturn();
     }
 
+    @Test
+    public void testDeleteUser() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.delete("/user/1"))
+                .andExpect(MockMvcResultMatchers.status().isNoContent())
+                .andExpect(MockMvcResultMatchers.view().name("index"))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
+
 }

@@ -52,6 +52,13 @@ public class UserController {
         return "index";
     }
 
+    @RequestMapping(value = "/{uid}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public String deleteUser(@PathVariable("uid") int uid) throws Exception {
+        userService.deleteUserByUid(uid);
+        return "index";
+    }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;

@@ -32,6 +32,11 @@ public class UserServiceImpl implements UserService{
         return userDao.updateUser(user);
     }
 
+    @Override
+    public boolean deleteUserByUid(Integer uid) throws Exception {
+        return userDao.deleteUserByUid(uid);
+    }
+
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;

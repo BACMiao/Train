@@ -49,4 +49,9 @@ public class UserServiceTest extends BaseJunit4Test {
         user.setPassenger(3);
         Assert.assertTrue(userService.updateUser(user));
     }
+
+    @Test
+    public void testDeleteUserByUid() throws Exception{
+        Assert.assertTrue(userService.deleteUserByUid(1));
+    }
 }
