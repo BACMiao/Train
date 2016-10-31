@@ -47,5 +47,21 @@ public class UserControllerTest extends BaseControllerTest {
         Assert.assertNotNull(result.getModelAndView().getModel().get("user"));
     }
 
+    @Test
+    public void testSaveUser() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                    .param("username", "lisilin")
+                    .param("password", "123456")
+                    .param("name", "李四")
+                    .param("IDType", "1")
+                    .param("ID", "345397125864123485")
+                    .param("telephone", "12354621369")
+                    .param("passenger","1"))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.view().name("index"))
+                .andReturn();
+
+    }
+
 
 }
