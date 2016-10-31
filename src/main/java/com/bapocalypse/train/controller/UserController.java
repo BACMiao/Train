@@ -41,7 +41,14 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public String createUser(User user, HttpServletResponse response)throws Exception{
         userService.insertUser(user);
-        response.setHeader("Location", "/user" + user.getUid());
+        response.setHeader("Location", "/user/" + user.getUid());
+        return "index";
+    }
+
+    @RequestMapping(value = "/{uid}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public String updateUser(@PathVariable("uid") int uid, User user) throws Exception {
+        userService.updateUser(user);
         return "index";
     }
 

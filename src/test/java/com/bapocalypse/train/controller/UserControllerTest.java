@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
  * @package: com.bapocalypse.train
  * @Author: 陈淼
  * @Date: 2016/10/30
- * @Description:
+ * @Description: UserController的测试类
  */
 public class UserControllerTest extends BaseControllerTest {
     @Autowired
@@ -59,9 +59,21 @@ public class UserControllerTest extends BaseControllerTest {
                     .param("passenger","1"))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.view().name("index"))
+                .andDo(MockMvcResultHandlers.print())
                 .andReturn();
-
+        Assert.assertNotNull(result.getResponse().getHeaderNames());
     }
 
+    @Test
+    public void testUpdateUser() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/1")
+                    .param("telephone", "12354621369")
+                    .param("passenger","2")
+                    .param("password", "123123"))
+                .andExpect(MockMvcResultMatchers.status().isNoContent())
+                .andExpect(MockMvcResultMatchers.view().name("index"))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
 
 }

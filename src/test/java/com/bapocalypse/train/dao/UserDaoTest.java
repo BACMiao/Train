@@ -48,4 +48,13 @@ public class UserDaoTest extends BaseJunit4Test {
         Assert.assertTrue(result);
     }
 
+    @Test
+    public void testUpdateUser() throws Exception{
+        User user = userDao.findUserByUid(1);
+        user.setTelephone("12111211111");
+        user.setPassword("321231");
+        user.setPassenger(2);
+        Assert.assertTrue(userDao.updateUser(user));
+    }
+
 }

@@ -40,4 +40,13 @@ public class UserServiceTest extends BaseJunit4Test {
         user.setTelephone("12354621369");
         Assert.assertTrue(userService.insertUser(user));
     }
+
+    @Test
+    public void testUpdateUser() throws Exception{
+        User user = userService.findUserByUid(1);
+        user.setTelephone("12111211111");
+        user.setPassword("321231");
+        user.setPassenger(3);
+        Assert.assertTrue(userService.updateUser(user));
+    }
 }

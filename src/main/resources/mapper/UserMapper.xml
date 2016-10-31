@@ -12,4 +12,9 @@
         INSERT INTO user(uid, username, password, name, IDType, ID, email, telephone, passenger)
         VALUES (#{uid}, #{username}, #{password}, #{name}, #{IDType}, #{ID}, #{email}, #{telephone}, #{passenger})
     </insert>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE user SET password=#{password}, email=#{email}, telephone=#{telephone}, passenger=#{passenger}
+        WHERE uid=#{uid}
+    </update>
 </mapper>

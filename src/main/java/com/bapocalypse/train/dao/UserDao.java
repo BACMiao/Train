@@ -13,4 +13,5 @@ import org.springframework.stereotype.Service;
 public interface UserDao {
     User findUserByUid(int uid) throws Exception;
     boolean insertUser(User user) throws Exception;
+    boolean updateUser(User user) throws Exception;
 }

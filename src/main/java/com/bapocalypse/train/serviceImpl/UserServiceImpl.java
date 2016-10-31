@@ -27,6 +27,11 @@ public class UserServiceImpl implements UserService{
         return userDao.insertUser(user);
     }
 
+    @Override
+    public boolean updateUser(User user) throws Exception {
+        return userDao.updateUser(user);
+    }
+
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
