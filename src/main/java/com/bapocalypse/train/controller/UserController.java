@@ -1,17 +1,12 @@
 package com.bapocalypse.train.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bapocalypse.train.model.User;
 import com.bapocalypse.train.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindException;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,11 +25,12 @@ public class UserController {
     @RequestMapping(value = "/{uid}",
             method = RequestMethod.GET,
             produces = "text/html;charset=UTF-8")
-    public String getUser(@PathVariable("uid") Integer uid, Model model) throws Exception {
+    public @ResponseBody String getUser(@PathVariable("uid") Integer uid) throws Exception {
+        JSONObject userJson = new JSONObject();
         User user = userService.findUserByUid(uid);
-        model.addAttribute("user",user);
-        System.out.println(user.getName());
-        return "index";
+        userJson.put("user",user);
+        System.out.println(userJson.toJSONString());
+        return userJson.toJSONString();
     }
 
     @RequestMapping(method = RequestMethod.POST)
