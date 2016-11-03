@@ -29,16 +29,17 @@ public class UserController {
         JSONObject userJson = new JSONObject();
         User user = userService.findUserByUid(uid);
         userJson.put("user",user);
-        System.out.println(userJson.toJSONString());
         return userJson.toJSONString();
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public String createUser(User user, HttpServletResponse response)throws Exception{
-        userService.insertUser(user);
+    public @ResponseBody String createUser(User user, HttpServletResponse response)throws Exception{
+        JSONObject userJson = new JSONObject();
+        boolean result = userService.insertUser(user);
+        userJson.put("result", result);
         response.setHeader("Location", "/user/" + user.getUid());
-        return "index";
+        return userJson.toJSONString();
     }
 
     @RequestMapping(value = "/{uid}", method = RequestMethod.PUT)

@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -40,11 +41,9 @@ public class UserControllerTest extends BaseControllerTest {
         * ResultActions.andReturn表示执行完成后返回相应的结果
         * */
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/user/1"))
-                .andExpect(MockMvcResultMatchers.model().attributeExists("user"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
-        Assert.assertNotNull(result.getModelAndView().getModel().get("user"));
     }
 
     @Test
