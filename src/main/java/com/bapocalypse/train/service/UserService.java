@@ -10,6 +10,8 @@ import com.bapocalypse.train.model.User;
  */
 public interface UserService {
     User findUserByUid(Integer uid) throws Exception;
+    User findUserByUsername(String username) throws Exception;
+    boolean loginUser(String username, String password) throws Exception;
     boolean insertUser(User user) throws Exception;
     boolean updateUser(User user) throws Exception;
     boolean deleteUserByUid(Integer uid) throws Exception;

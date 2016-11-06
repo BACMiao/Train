@@ -29,6 +29,16 @@ public class UserServiceTest extends BaseJunit4Test {
     }
 
     @Test
+    public void testFindUserByUsername() throws Exception {
+        User user = userService.findUserByUsername("zhangsan");
+        Assert.assertEquals("张三", user.getName());
+    }
+
+    @Test
+    public  void testLoginUser() throws Exception{
+        Assert.assertTrue(userService.loginUser("zhangsan", "123456"));
+    }
+    @Test
     public void testInsertUser() throws Exception {
         User user = new User();
         user.setUsername("lisilin");

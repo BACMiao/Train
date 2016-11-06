@@ -23,6 +23,21 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User findUserByUsername(String username) throws Exception {
+        return userDao.findUserByUsername(username);
+    }
+
+    @Override
+    public boolean loginUser(String username, String password) throws Exception {
+        User user = userDao.findUserByUsername(username);
+        if (user != null && !user.getPassword().equals("")){
+            return user.getPassword().equals(password);
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     public boolean insertUser(User user) throws Exception {
         return userDao.insertUser(user);
     }

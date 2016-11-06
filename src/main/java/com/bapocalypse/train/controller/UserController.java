@@ -6,9 +6,13 @@ import com.bapocalypse.train.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @package: com.bapocalypse.train.controller
@@ -34,11 +38,23 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public @ResponseBody String createUser(User user, HttpServletResponse response)throws Exception{
+    public @ResponseBody String createUser(@Valid User user,
+                                           HttpServletResponse response, BindingResult bindingResult)throws Exception{
+        String error = "";
+        boolean result = false;
         JSONObject userJson = new JSONObject();
-        boolean result = userService.insertUser(user);
+        if (bindingResult.hasErrors()){
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            for (ObjectError e : allErrors) {
+                error = String.join(";", e.getDefaultMessage());
+
+            }
+        } else {
+            result = userService.insertUser(user);
+            response.setHeader("Location", "/user/" + user.getUid());
+        }
         userJson.put("result", result);
-        response.setHeader("Location", "/user/" + user.getUid());
+        userJson.put("error", error);
         return userJson.toJSONString();
     }
 
@@ -54,6 +70,14 @@ public class UserController {
     public String deleteUser(@PathVariable("uid") int uid) throws Exception {
         userService.deleteUserByUid(uid);
         return "index";
+    }
+
+    @RequestMapping("/login")
+    public @ResponseBody String loginUser(String username, String password) throws Exception {
+        JSONObject loginJson = new JSONObject();
+        boolean result = userService.loginUser(username, password);
+        loginJson.put("result", result);
+        return loginJson.toJSONString();
     }
 
     @Autowired

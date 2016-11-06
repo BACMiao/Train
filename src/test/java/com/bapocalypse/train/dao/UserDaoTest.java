@@ -35,6 +35,12 @@ public class UserDaoTest extends BaseJunit4Test {
     }
 
     @Test
+    public void testFindUserByUsername() throws Exception{
+        User user = userDao.findUserByUsername("zhangsan");
+        Assert.assertEquals("张三", user.getName());
+    }
+
+    @Test
     public void testInsertUser() throws Exception{
         User user = new User();
         user.setUsername("lisilin");

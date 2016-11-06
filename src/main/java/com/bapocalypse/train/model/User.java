@@ -1,5 +1,8 @@
 package com.bapocalypse.train.model;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 /**
  * @package: com.bapocalypse.train.model
  * @Author: 陈淼
@@ -8,11 +11,13 @@ package com.bapocalypse.train.model;
  */
 public class User {
     private int uid;
+    @Size(min = 6, max = 20, message = "6-30位字母、数字或“_”,字母开头")
     private String username; //用户名
     private String password; //密码
     private String name;     //真实姓名
     private int IDType;      //证件类型
     private String ID;       //证件号
+    @Pattern(regexp = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}")
     private String email;    //邮箱
     private String telephone; //电话
     private int passenger; //乘客类型

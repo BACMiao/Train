@@ -7,6 +7,10 @@
     <select id="findUserByUid" parameterType="int" resultType="user">
         SELECT * FROM user WHERE uid=#{uid}
     </select>
+
+    <select id="findUserByUsername" parameterType="String" resultType="user">
+        SELECT * FROM user WHERE username=#{username}
+    </select>
     
     <insert id="insertUser" parameterType="user">
         INSERT INTO user(uid, username, password, name, IDType, ID, email, telephone, passenger)

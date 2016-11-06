@@ -1,6 +1,7 @@
 package com.bapocalypse.train.controller;
 
 import com.bapocalypse.train.BaseControllerTest;
+import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,10 +55,10 @@ public class UserControllerTest extends BaseControllerTest {
                     .param("name", "李四")
                     .param("IDType", "1")
                     .param("ID", "345397125864123485")
+                    .param("email", "3453971")
                     .param("telephone", "12354621369")
                     .param("passenger","1"))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.view().name("index"))
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
         Assert.assertNotNull(result.getResponse().getHeaderNames());
@@ -80,6 +81,16 @@ public class UserControllerTest extends BaseControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.delete("/user/1"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent())
                 .andExpect(MockMvcResultMatchers.view().name("index"))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
+
+    @Test
+    public void testLoginUser() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/login")
+                    .param("username", "zhangsan")
+                    .param("password", "1"))
+                .andExpect(MockMvcResultMatchers.status().is2xxSuccessful())
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
     }
