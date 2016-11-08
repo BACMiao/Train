@@ -7,15 +7,27 @@
 <body>
 用户注册页面
 <form action="/user" method="post">
-    用户名：<input type="text" name="username" /><br>
-    登录密码：<input type="password" name="password" /><br>
-    确认密码：<input type="password" name="password2" /><br>
-    姓名：<input type="text" name="name" /><br>
-    证件类型：<input type="text" name="IDType" /><br>
-    证件号码：<input type="text" name="ID" /><br>
-    邮箱：<input type="text" name="email" /><br>
-    手机号码：<input type="text" name="telephone" /><br>
-    旅客类型：<input type="text" name="passenger" /><br>
+    用户名：<input type="text" name="username" placeholder="用户名设置成功后不可修改"/><br>
+    登录密码：<input type="password" name="password" placeholder="6-20位字母、数字或符号"/><br>
+    确认密码：<input type="password" name="password2" placeholder="再次输入您的登录密码" /><br>
+    姓名：<input type="text" name="name" placeholder="请输入您的姓名"/><br>
+    证件类型：
+    <select name="IDType">
+        <option value ="1">二代身份证</option>
+        <option value ="2">港澳通行证</option>
+        <option value="3">台湾通行证</option>
+        <option value="4">护照</option>
+    </select><br>
+    证件号码：<input type="text" name="ID" placeholder="请输入您的证件号码"/><br>
+    邮箱：<input type="text" name="email" placeholder="请正确填写邮箱地址"/><br>
+    手机号码：<input type="text" name="telephone" placeholder="请输入您的手机号码"/><br>
+    旅客类型：
+    <select name="passenger">
+        <option value ="1">成人</option>
+        <option value ="2">儿童</option>
+        <option value="3">学生</option>
+        <option value="4">残疾军人、伤残人民警察</option>
+    </select><br>
     <input type="submit" value="下一步">
 </form>
 </body>

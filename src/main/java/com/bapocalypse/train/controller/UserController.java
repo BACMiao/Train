@@ -1,17 +1,22 @@
 package com.bapocalypse.train.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bapocalypse.train.model.Image;
+import com.bapocalypse.train.model.ImageResult;
 import com.bapocalypse.train.model.User;
 import com.bapocalypse.train.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -74,8 +79,12 @@ public class UserController {
     @RequestMapping(value = "/login", produces = "text/html;charset=UTF-8")
     public @ResponseBody String loginUser(String username, String password) throws Exception {
         JSONObject loginJson = new JSONObject();
+        ImageResult ir = Image.generateImage();
         boolean result = userService.loginUser(username, password);
         loginJson.put("result", result);
+        loginJson.put("file", ir.getName());
+        loginJson.put("tip", ir.getTip());
+        System.out.println(loginJson.toJSONString());
         return loginJson.toJSONString();
     }
 

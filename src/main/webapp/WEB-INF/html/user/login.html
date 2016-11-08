@@ -3,12 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>登陆</title>
+    <script src="../../resources/jquery/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript">
+        var index = 1;
+        function addImg(e){
+            var parentDiv = document.getElementById("insert");
+            var topValue = 0, leftValue = 0;
+            var obj = parentDiv;
+            while (obj){
+                leftValue += obj.offsetLeft;
+                topValue += obj.offsetTop;
+                obj = obj.offsetParent;
+            }
+
+            e = e||window.event;
+            var left = e.clientX + document.body.scrollLeft - document.body.clientLeft - 10;
+            var top = e.clientY + document.body.scrollTop - document.body.clientTop - 10;
+            var imgDivId = "img_" + index++;
+
+            var newDiv = document.createElement("div");
+            parentDiv.appendChild(newDiv);
+
+            newDiv.id = imgDivId;
+            newDiv.style.position = "relative";
+            newDiv.style.zIndex = index;
+            newDiv.style.width = "20px";
+            newDiv.style.height = "20px";
+            newDiv.style.top = top - topValue - 150 + 10 + "px";
+            newDiv.style.left = left - leftValue - 300 + "px";
+            newDiv.style.display = "inline";
+            newDiv.setAttribute("onclick", "removeSelf(" + imgDivId + ");");
+
+            var img = document.createElement("img");
+            newDiv.appendChild(img);
+
+            img.src = "../../resources/img/logo.png";
+            img.style.width = "20px";
+            img.style.height = "20px";
+            img.style.top = "0px";
+            img.style.left = "0px";
+            img.style.position = "absolute";
+            img.style.zIndex = index;
+        }
+
+        function removeSelf(id){
+            document.getElementById("insert").removeChild(document.getElementById(id));
+        }
+
+//        function login(){
+//            var parentDiv = document.getElementById("insert");
+//            var nodes = parentDiv.childNodes;
+//            var result = '';
+//            for (var i = 0; i < nodes.length; i++){
+//                var id = nodes[i].id;
+////                if (id && id.startWith)
+//            }
+//        }
+
+
+    </script>
 </head>
 <body>
 <form action="/user/login" method="post">
-    用户名：<input type="text" name="username" />
+    <input type="hidden" id="location" name="location"/>
+    登录名：<input type="text" name="username" />
     密码：<input type="password" name="password" />
+    验证码：
+    <div id="insert">
+        <img src="../../resources/targetImage/" height="150" width="300" onclick="addImg()">
+    </div>
     <input type="submit" value="登陆">
+    <input type="submit" value="快速注册">
 </form>
 </body>
 </html>
