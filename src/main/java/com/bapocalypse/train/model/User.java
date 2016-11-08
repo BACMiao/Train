@@ -1,5 +1,8 @@
 package com.bapocalypse.train.model;
 
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -11,14 +14,19 @@ import javax.validation.constraints.Size;
  */
 public class User {
     private int uid;
-    @Size(min = 6, max = 20, message = "6-30位字母、数字或“_”,字母开头")
+    @Size(min = 6, max = 30, message = "6-30位字母")
+    @Pattern(regexp = "^[A-Za-z]+[A-Za-z0-9_]+$", message = "字母、数字或“_”,且字母开头")
     private String username; //用户名
+    @Size(min = 6, max = 20, message = "密码必须为6-20位")
     private String password; //密码
+    @NotNull(message="名字不能为空")
     private String name;     //真实姓名
     private int IDType;      //证件类型
+    @Pattern(regexp = "[0-9]{17}+[0-9X]$", message = "请输入有效的证件号！")
     private String ID;       //证件号
-    @Pattern(regexp = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}")
+    @Email(message = "请输入有效的电子邮件地址！")
     private String email;    //邮箱
+    @NotNull(message = "手机号不能为空")
     private String telephone; //电话
     private int passenger; //乘客类型
 

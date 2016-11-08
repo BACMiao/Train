@@ -54,10 +54,10 @@ public class UserControllerTest extends BaseControllerTest {
                     .param("password", "123456")
                     .param("name", "李四")
                     .param("IDType", "1")
-                    .param("ID", "345397125864123485")
-                    .param("email", "3453971")
+                    .param("ID", "34539712586412348")
                     .param("telephone", "12354621369")
                     .param("passenger","1"))
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
@@ -89,7 +89,7 @@ public class UserControllerTest extends BaseControllerTest {
     public void testLoginUser() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/login")
                     .param("username", "zhangsan")
-                    .param("password", "1"))
+                    .param("password", "123456"))
                 .andExpect(MockMvcResultMatchers.status().is2xxSuccessful())
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();

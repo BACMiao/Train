@@ -28,7 +28,7 @@ public class UserController {
 
     @RequestMapping(value = "/{uid}",
             method = RequestMethod.GET,
-            produces = "text/html;charset=UTF-8")
+            produces = "application/json;charset=UTF-8")
     public @ResponseBody String getUser(@PathVariable("uid") Integer uid) throws Exception {
         JSONObject userJson = new JSONObject();
         User user = userService.findUserByUid(uid);
@@ -36,10 +36,10 @@ public class UserController {
         return userJson.toJSONString();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseStatus(HttpStatus.CREATED)
-    public @ResponseBody String createUser(@Valid User user,
-                                           HttpServletResponse response, BindingResult bindingResult)throws Exception{
+    public @ResponseBody String createUser(@Valid User user, BindingResult bindingResult,
+                                           HttpServletResponse response)throws Exception{
         String error = "";
         boolean result = false;
         JSONObject userJson = new JSONObject();
@@ -47,7 +47,6 @@ public class UserController {
             List<ObjectError> allErrors = bindingResult.getAllErrors();
             for (ObjectError e : allErrors) {
                 error = String.join(";", e.getDefaultMessage());
-
             }
         } else {
             result = userService.insertUser(user);
@@ -72,7 +71,7 @@ public class UserController {
         return "index";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login", produces = "text/html;charset=UTF-8")
     public @ResponseBody String loginUser(String username, String password) throws Exception {
         JSONObject loginJson = new JSONObject();
         boolean result = userService.loginUser(username, password);
