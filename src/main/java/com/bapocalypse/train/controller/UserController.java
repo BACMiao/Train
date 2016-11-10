@@ -80,8 +80,8 @@ public class UserController {
     public @ResponseBody String loginUser(String username, String password) throws Exception {
         JSONObject loginJson = new JSONObject();
         ImageResult ir = Image.generateImage();
-        boolean result = userService.loginUser(username, password);
-        loginJson.put("result", result);
+//        boolean result = userService.loginUser(username, password);
+//        loginJson.put("result", result);
         loginJson.put("file", ir.getName());
         loginJson.put("tip", ir.getTip());
         System.out.println(loginJson.toJSONString());

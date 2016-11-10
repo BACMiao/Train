@@ -16,6 +16,9 @@ public class Image {
     private static Map<String, ImageGroup> imageGroupMap = new HashMap<>();
     private static Map<Integer, Map<String, ImageGroup>> countGroupsMap = new HashMap<>();
 
+    public static void main(String[] args) throws IOException {
+        generateImage();
+    }
     private static BufferedImage getBufferedImage(String fileUrl) throws IOException{
         File f = new File("E:\\computer\\Project\\train\\src\\main\\webapp\\WEB-INF\\resources\\sourceImage" + fileUrl);
         return ImageIO.read(f);
@@ -43,7 +46,7 @@ public class Image {
         int x2 = 0;
         int order = 0;
         List<Integer> keysOrderList = new ArrayList<>();
-        StringBuffer keysOrder = new StringBuffer();
+        StringBuilder keysOrder = new StringBuilder();
         Set<Integer> keySet = new HashSet<>();
         for (BufferedImageWrap image:imageWraps){
             int[] rgb = image.getBufferedImage().getRGB(0, 0, width, high, null, 0, width);
@@ -66,7 +69,7 @@ public class Image {
         keysOrder.deleteCharAt(keysOrder.length() - 1);
         System.out.println("答案位置：" + keysOrder);
         String fileName =UUID.randomUUID().toString().replaceAll("-","");
-        String fileUrl = "E:\\computer\\Project\\train\\src\\main\\webapp\\WEB-INF\\resources\\targetImage" + fileName;
+        String fileUrl = "E:\\computer\\Project\\train\\src\\main\\webapp\\WEB-INF\\resources\\targetImage\\" + fileName;
         saveImage(destImage, fileUrl, "jpeg");
 
         ImageResult ir = new ImageResult();
@@ -143,17 +146,21 @@ public class Image {
     }
 
     private static void initImageGroup(){
-        ImageGroup group1 = new ImageGroup("包包", 4, "WEB-INF/resources/sourceImage/baobao/1.jpg",
-                "WEB-INF/resources/sourceImage/baobao/2.jpg",
-                "WEB-INF/resources/sourceImage/baobao/3.jpg",
-                "WEB-INF/resources/sourceImage/baobao/4.jpg");
-        ImageGroup group2 = new ImageGroup("磁铁", 2, "WEB-INF/resources/sourceImage/citie/1.jpg",
-                "WEB-INF/resources/sourceImage/citie/2.jpg");
-        ImageGroup group3 = new ImageGroup("老虎", 2, "WEB-INF/resources/sourceImage/laohu/1.jpg",
-                "WEB-INF/resources/sourceImage/laohu/2.jpg",
-                "WEB-INF/resources/sourceImage/laohu/3.jpg",
-                "WEB-INF/resources/sourceImage/laohu/4.jpg");
-        initMap(group1, group2, group3);
+        ImageGroup group1 = new ImageGroup("包包", 4, "/baobao/1.jpg",
+                "/baobao/2.jpg",
+                "/baobao/3.jpg",
+                "/baobao/4.jpg");
+        ImageGroup group2 = new ImageGroup("磁铁", 2, "/citie/1.jpg",
+                "/citie/2.jpg");
+        ImageGroup group3 = new ImageGroup("老虎", 4, "/laohu/1.jpg",
+                "/laohu/2.jpg",
+                "/laohu/3.jpg",
+                "/laohu/4.jpg");
+        ImageGroup group4 = new ImageGroup("柚子", 4, "/youzi/1.jpg",
+                "/youzi/2.jpg",
+                "/youzi/3.jpg",
+                "/youzi/4.jpg");
+        initMap(group1, group2, group3, group4);
     }
 
     private static void initMap(ImageGroup... groups){
