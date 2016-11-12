@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>登陆</title>
-    <script src="../../resources/jquery/jquery-1.12.1.min.js"></script>
+    <script src="../../../resources/jquery/jquery-1.12.1.min.js"></script>
     <script type="text/javascript">
         $(function(){
             url = "../../user/identify";
@@ -12,8 +12,10 @@
                     var tip = image.tip;
                     $(this).html(tip);
                 });
-                var fileName = image.file;
-                $("#imageFile").attr('src','../../resources/targetImage/'+fileName);
+                $('#imageFile').each(function () {
+                    var fileName = image.file;
+                    $(this).attr('src','../../../resources/targetImage/'+fileName);
+                });
             });
         });
         var index = 1;
@@ -43,7 +45,7 @@
             newDiv.style.top = top - topValue - 150 + 10 + "px";
             newDiv.style.left = left - leftValue - 300 + "px";
             newDiv.style.display = "inline";
-            newDiv.setAttribute("onclick", "removeSelf(" + imgDivId + ");");
+            newDiv.setAttribute("onclick", "removeSelf('" + imgDivId + "');");
 
             var img = document.createElement("img");
             newDiv.appendChild(img);
@@ -88,10 +90,10 @@
     密码：<input type="password" name="password" />
     验证码：
     <div id="insert">
-        选出图片中的<span id="tip"></span>：<br>
+        选出图片中的"<span id="tip"></span>"：<br>
         <img id="imageFile" src="" height="150" width="300" onclick="addImg()">
     </div>
-    <input type="submit" value="登陆">
+    <input type="submit" value="登陆" onclick="login()">
     <input type="submit" value="快速注册">
 </form>
 </body>

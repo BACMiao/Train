@@ -1,6 +1,12 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.util;
+
+import com.bapocalypse.train.model.BufferedImageWrap;
+import com.bapocalypse.train.model.GenerateImageGroup;
+import com.bapocalypse.train.model.ImageGroup;
+import com.bapocalypse.train.model.ImageResult;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,11 +22,12 @@ public class Image {
     private static Map<String, ImageGroup> imageGroupMap = new HashMap<>();
     private static Map<Integer, Map<String, ImageGroup>> countGroupsMap = new HashMap<>();
 
-    public static void main(String[] args) throws IOException {
-        generateImage();
-    }
-    private static BufferedImage getBufferedImage(String fileUrl) throws IOException{
-        File f = new File("E:\\computer\\Project\\train\\src\\main\\webapp\\WEB-INF\\resources\\sourceImage" + fileUrl);
+//    public static void main(String[] args) throws IOException {
+//        generateImage();
+//    }
+    private static BufferedImage getBufferedImage(String fileUrl, HttpServletRequest request) throws IOException{
+        String realPathDir = request.getSession().getServletContext().getRealPath("/");
+        File f = new File(realPathDir + "resources\\sourceImage" + fileUrl);
         return ImageIO.read(f);
     }
 
@@ -34,7 +41,9 @@ public class Image {
         return false;
     }
 
-    public static  ImageResult mergeImage(List<BufferedImageWrap> imageWraps, String tip){
+    public static ImageResult mergeImage(List<BufferedImageWrap> imageWraps,
+                                         String tip,
+                                         HttpServletRequest request){
         Collections.shuffle(imageWraps);
 
         int width = 200;
@@ -69,7 +78,8 @@ public class Image {
         keysOrder.deleteCharAt(keysOrder.length() - 1);
         System.out.println("答案位置：" + keysOrder);
         String fileName =UUID.randomUUID().toString().replaceAll("-","");
-        String fileUrl = "E:\\computer\\Project\\train\\src\\main\\webapp\\WEB-INF\\resources\\targetImage\\" + fileName + ".jpeg";
+        String realPathDir = request.getSession().getServletContext().getRealPath("/");
+        String fileUrl = realPathDir + "resources\\targetImage\\" + fileName + ".jpeg";
         saveImage(destImage, fileUrl, "jpeg");
 
         ImageResult ir = new ImageResult();
@@ -79,20 +89,20 @@ public class Image {
         ir.setTip(tip);
         return ir;
     }
-    public static ImageResult generateImage() throws IOException{
+    public static ImageResult generateImage(HttpServletRequest request) throws IOException{
         initImageGroup();
         GenerateImageGroup generateImageGroup = randomImageGroups();
         List<BufferedImageWrap> images = new ArrayList<>();
         for (ImageGroup group:generateImageGroup.getGroups()){
             for (String imgName:group.getImages()){
-                images.add(new BufferedImageWrap(false, getBufferedImage(imgName)));
+                images.add(new BufferedImageWrap(false, getBufferedImage(imgName, request)));
             }
         }
 
         for (String imgName:generateImageGroup.getKeyGroup().getImages()){
-            images.add(new BufferedImageWrap(true, getBufferedImage(imgName)));
+            images.add(new BufferedImageWrap(true, getBufferedImage(imgName, request)));
         }
-        return mergeImage(images, generateImageGroup.getKeyGroup().getName());
+        return mergeImage(images, generateImageGroup.getKeyGroup().getName(), request);
     }
     private static GenerateImageGroup randomImageGroups(){
         List<ImageGroup> result = new ArrayList<>();
