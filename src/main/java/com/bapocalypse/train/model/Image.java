@@ -69,7 +69,7 @@ public class Image {
         keysOrder.deleteCharAt(keysOrder.length() - 1);
         System.out.println("答案位置：" + keysOrder);
         String fileName =UUID.randomUUID().toString().replaceAll("-","");
-        String fileUrl = "E:\\computer\\Project\\train\\src\\main\\webapp\\WEB-INF\\resources\\targetImage\\" + fileName;
+        String fileUrl = "E:\\computer\\Project\\train\\src\\main\\webapp\\WEB-INF\\resources\\targetImage\\" + fileName + ".jpeg";
         saveImage(destImage, fileUrl, "jpeg");
 
         ImageResult ir = new ImageResult();
@@ -160,7 +160,11 @@ public class Image {
                 "/youzi/2.jpg",
                 "/youzi/3.jpg",
                 "/youzi/4.jpg");
-        initMap(group1, group2, group3, group4);
+        ImageGroup group5 = new ImageGroup("蘑菇", 2, "/mogu/1.jpg",
+                "/mogu/2.jpg");
+        ImageGroup group6 = new ImageGroup("订书机", 2, "/dingshuji/1.jpg",
+                "/dingshuji/2.jpg");
+        initMap(group1, group2, group3, group4, group5, group6);
     }
 
     private static void initMap(ImageGroup... groups){

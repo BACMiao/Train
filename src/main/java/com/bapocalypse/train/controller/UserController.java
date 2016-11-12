@@ -76,16 +76,25 @@ public class UserController {
         return "index";
     }
 
-    @RequestMapping(value = "/login", produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
     public @ResponseBody String loginUser(String username, String password) throws Exception {
         JSONObject loginJson = new JSONObject();
         ImageResult ir = Image.generateImage();
-//        boolean result = userService.loginUser(username, password);
-//        loginJson.put("result", result);
+        boolean result = userService.loginUser(username, password);
+        loginJson.put("result", result);
         loginJson.put("file", ir.getName());
         loginJson.put("tip", ir.getTip());
         System.out.println(loginJson.toJSONString());
         return loginJson.toJSONString();
+    }
+
+    @RequestMapping(value = "/identify", produces = "application/json;charset=UTF-8")
+    public @ResponseBody String identify() throws Exception{
+        JSONObject imageJson = new JSONObject();
+        ImageResult ir = Image.generateImage();
+        imageJson.put("file", ir.getName());
+        imageJson.put("tip", ir.getTip());
+        return imageJson.toJSONString();
     }
 
     @Autowired
