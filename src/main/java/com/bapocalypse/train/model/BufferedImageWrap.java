@@ -6,11 +6,11 @@ import java.awt.image.BufferedImage;
  * @package: com.bapocalypse.train.model
  * @Author: 陈淼
  * @Date: 2016/11/8
- * @Description:
+ * @Description: 带有标识的图片缓冲区的模型类，相当于一个画布。
  */
 public class BufferedImageWrap {
-    private boolean key;
-    private BufferedImage bufferedImage;
+    private boolean key;                  //用于标识答案（true）或干扰项（false）
+    private BufferedImage bufferedImage;  //图片缓冲区
 
     public BufferedImageWrap(boolean key, BufferedImage bufferedImage) {
         this.key = key;

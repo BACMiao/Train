@@ -6,11 +6,11 @@ import java.util.List;
  * @package: com.bapocalypse.train.model
  * @Author: 陈淼
  * @Date: 2016/11/8
- * @Description:
+ * @Description: 生成验证码的图片组，即组成验证码的小图片
  */
 public class GenerateImageGroup {
-    private ImageGroup keyGroup;
-    private List<ImageGroup> groups;
+    private ImageGroup keyGroup;      //所需要选取的图片的组（答案）
+    private List<ImageGroup> groups;  //验证码图片中除去答案的图片的组（干扰项）
 
     public GenerateImageGroup(ImageGroup keyGroup, List<ImageGroup> groups) {
         this.keyGroup = keyGroup;

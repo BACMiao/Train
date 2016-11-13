@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登陆</title>
+    <title>登录</title>
     <script src="../../../resources/jquery/jquery-1.12.1.min.js"></script>
     <script type="text/javascript">
         $(function(){
@@ -85,6 +85,7 @@
 </head>
 <body>
 <form action="/user/login" method="post">
+    <!-- location用于传递页面选择的坐标信息 -->
     <input type="hidden" id="location" name="location"/>
     登录名：<input type="text" name="username" />
     密码：<input type="password" name="password" />

@@ -6,13 +6,13 @@ import java.util.Set;
  * @package: com.bapocalypse.train.model
  * @Author: 陈淼
  * @Date: 2016/11/8
- * @Description:
+ * @Description: 验证码图片的模型类
  */
 public class ImageResult {
-    private String name;
-    private Set<Integer> keySet;
-    private String uniqueKey;
-    private String tip;
+    private String name;               //验证码图片名称（UUID + '.jepg'）
+    private Set<Integer> keySet;       //答案图片所在验证码图片中的位置
+    private String uniqueKey;          //放在Cookie中的独有标识，值为图片名称中的UUID
+    private String tip;                //验证码需要选择的实物名称
 
     public String getName() {
         return name;
