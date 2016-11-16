@@ -83,8 +83,6 @@ public class UserController {
                                           String password,
                                           String location) throws Exception {
         JSONObject loginJson = new JSONObject();
-        boolean result = userService.loginUser(username, password);
-        loginJson.put("result", result);
         Cookie[] cookies = request.getCookies();
         Cookie note = null;
         for (Cookie cookie : cookies){
@@ -93,7 +91,11 @@ public class UserController {
                 break;
             }
         }
-
+        boolean result = userService.loginUser(username, password);
+        loginJson.put("result", result);
+        if (!result){
+            return loginJson.toJSONString();
+        }
         if (null == note){
             loginJson.put("result", false);
         } else {
