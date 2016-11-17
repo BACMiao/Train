@@ -14,6 +14,18 @@ public class Station {
     private Double latitude;  //纬度
     private Double longitude; //经度
 
+    public Station() {
+    }
+
+    public Station(int sid, String sname, String province, String city, Double latitude, Double longitude) {
+        this.sid = sid;
+        this.sname = sname;
+        this.province = province;
+        this.city = city;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public int getSid() {
         return sid;
     }

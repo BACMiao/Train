@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * @package: com.bapocalypse.train
+ * @package: com.bapocalypse.train.dao
  * @Author: 陈淼
  * @Date: 2016/10/28
  * @Description: UserDao的测试类，即UserMapper测试类
