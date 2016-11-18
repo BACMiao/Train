@@ -47,4 +47,10 @@ public class StationDaoTest extends BaseJunit4Test {
         boolean result = stationDao.insertStation(station);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void testCountsStation() throws Exception{
+        int count = stationDao.countsStation();
+        System.out.println(count);
+    }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bapocalypse.train.dao.DistanceDao">
+    <insert id="insertDistance" parameterType="distance">
+        INSERT INTO distance(sid1, sid2, length)
+        VALUES (#{sid1}, #{sid2}, #{length})
+    </insert>
+    
+    <select id="countsDistance" resultType="int">
+        SELECT count(*) FROM distance
+    </select>
+
+</mapper>

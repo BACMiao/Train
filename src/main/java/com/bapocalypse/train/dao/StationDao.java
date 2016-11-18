@@ -17,4 +17,5 @@ public interface StationDao {
     Station findStationBySid(int sid) throws Exception;
     List<Station> findStationBySname(@Param(value = "sname") String sname) throws Exception;
     boolean insertStation(Station station) throws Exception;
+    Integer countsStation() throws Exception;
 }

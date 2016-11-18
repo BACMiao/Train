@@ -21,4 +21,8 @@
         VALUES (#{sid}, #{sname}, #{province}, #{city}, #{latitude}, #{longitude})
     </insert>
 
+    <select id="countsStation" resultType="int">
+        SELECT count(*) FROM station
+    </select>
+
 </mapper>
