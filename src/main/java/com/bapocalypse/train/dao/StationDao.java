@@ -2,7 +2,7 @@ package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.model.Station;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * @Date: 2016/11/17
  * @Description: Dao接口，站点管理
  */
-@Service
+@Repository
 public interface StationDao {
     Station findStationBySid(int sid) throws Exception;
     List<Station> findStationBySname(@Param(value = "sname") String sname) throws Exception;

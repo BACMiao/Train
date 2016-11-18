@@ -17,8 +17,8 @@ public class DistanceServiceImpl implements DistanceService {
     private DistanceDao distanceDao;
 
     @Override
-    public boolean createDistance(Distance distance) {
-        return false;
+    public boolean createDistance(Distance distance) throws Exception {
+        return distanceDao.insertDistance(distance);
     }
 
     public DistanceDao getDistanceDao() {

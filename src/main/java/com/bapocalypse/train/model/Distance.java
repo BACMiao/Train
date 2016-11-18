@@ -34,4 +34,13 @@ public class Distance {
     public void setLength(int length) {
         this.length = length;
     }
+
+    @Override
+    public String toString() {
+        return "Distance{" +
+                "sid1=" + sid1 +
+                ", sid2=" + sid2 +
+                ", length=" + length +
+                '}';
+    }
 }

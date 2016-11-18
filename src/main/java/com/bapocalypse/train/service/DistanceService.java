@@ -9,5 +9,5 @@ import com.bapocalypse.train.model.Distance;
  * @Description: 距离操作的服务接口
  */
 public interface DistanceService {
-    boolean createDistance(Distance distance);
+    boolean createDistance(Distance distance) throws Exception;
 }

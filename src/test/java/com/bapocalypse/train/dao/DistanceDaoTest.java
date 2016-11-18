@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * @package: com.bapocalypse.train.dao
  * @Author: 陈淼
@@ -25,8 +27,8 @@ public class DistanceDaoTest extends BaseJunit4Test {
     @Test
     public void testInsertDistance() throws Exception{
         Distance distance = new Distance();
-        distance.setSid1(1);
-        distance.setSid2(4);
+        distance.setSid1(4);
+        distance.setSid2(5);
         distance.setLength(27);
         boolean result = distanceDao.insertDistance(distance);
         Assert.assertTrue(result);
@@ -36,5 +38,13 @@ public class DistanceDaoTest extends BaseJunit4Test {
     public void testCountsDistance() throws Exception{
         int count = distanceDao.countsDistance();
         System.out.println(count);
+    }
+
+    @Test
+    public void testFindAllDistance() throws Exception {
+        List<Distance> distances = distanceDao.findAllDistance();
+        for (Distance distance : distances){
+            System.out.println(distance);
+        }
     }
 }

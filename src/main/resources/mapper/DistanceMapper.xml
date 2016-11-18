@@ -11,5 +11,9 @@
     <select id="countsDistance" resultType="int">
         SELECT count(*) FROM distance
     </select>
+    
+    <select id="findAllDistance" resultType="distance">
+        SELECT * FROM distance
+    </select>
 
 </mapper>
