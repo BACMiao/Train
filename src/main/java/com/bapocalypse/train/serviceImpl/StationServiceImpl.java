@@ -6,6 +6,8 @@ import com.bapocalypse.train.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @package: com.bapocalypse.train.serviceImpl
  * @Author: 陈淼
@@ -24,6 +26,11 @@ public class StationServiceImpl implements StationService {
     @Override
     public int countsStation() throws Exception {
         return 0;
+    }
+
+    @Override
+    public List<Station> selectAllStations() throws Exception {
+        return stationDao.findAllStation();
     }
 
     public StationDao getStationDao() {

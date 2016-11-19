@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <script src="../../../resources/jquery/jquery-1.12.1.min.js"></script>
+    <script src="/resources/jquery/jquery-1.12.1.min.js"></script>
     <script type="text/javascript">
         $(function(){
-            url = "../../user/identify";
+            url = "/user/identify";
             $.getJSON(url,function(image){
                 $('#tip').each(function () {
                     var tip = image.tip;
@@ -14,7 +14,7 @@
                 });
                 $('#imageFile').each(function () {
                     var fileName = image.file;
-                    $(this).attr('src','../../../resources/targetImage/'+fileName);
+                    $(this).attr('src','/resources/targetImage/'+fileName);
                 });
             });
         });
@@ -50,7 +50,7 @@
             var img = document.createElement("img");
             newDiv.appendChild(img);
 
-            img.src = "../../resources/img/logo.png";
+            img.src = "/resources/img/logo.png";
             img.style.width = "20px";
             img.style.height = "20px";
             img.style.top = "0px";

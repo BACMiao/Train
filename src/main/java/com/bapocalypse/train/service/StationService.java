@@ -2,6 +2,8 @@ package com.bapocalypse.train.service;
 
 import com.bapocalypse.train.model.Station;
 
+import java.util.List;
+
 /**
  * @package: com.bapocalypse.train.service
  * @Author: 陈淼
@@ -11,4 +13,5 @@ import com.bapocalypse.train.model.Station;
 public interface StationService {
     Station findStationBySid(int sid) throws Exception;
     int countsStation() throws Exception;
+    List<Station> selectAllStations() throws Exception;
 }

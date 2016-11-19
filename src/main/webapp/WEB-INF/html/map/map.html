@@ -6,5 +6,68 @@
 </head>
 <body>
 这是站点地图
+<body>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 900px;height:600px;"></div>
+</body>
+<script src="/resources/jquery/jquery-1.12.1.min.js"></script>
+<script src="/resources/echarts/echarts.min.js"></script>
+<script>
+    var geoCoordMap = {
+    };
+    $.get('/station/all',function(msg){
+        for (var i=0; i < msg.stations.length; i++){
+            geoCoordMap[msg.stations[i].city] = [msg.stations[i].longitude, msg.stations[i].latitude];
+        }
+
+        $.get('/resources/echarts/json/fujian.json', function (fujianJson) {
+            echarts.registerMap('fujian', fujianJson);
+            var chart = echarts.init(document.getElementById('main'));
+            chart.setOption({
+                geo: {
+                    map: 'fujian',
+                    label: {
+                        emphasis: {
+                            show: false
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            areaColor: '#323c48',
+                            borderColor: '#111'
+                        },
+                        emphasis: {
+                            areaColor: '#2a333d'
+                        }
+                    }
+                },
+
+                series: [
+                    {
+                        name: 'station',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        data: convertData(msg)
+                    }
+                ]
+            });
+        });
+    });
+
+    var convertData = function (msg) {
+        var res = [];
+        for (var i = 0; i < msg.stations.length; i++) {
+            var geoCoord = geoCoordMap[msg.stations[i].city];
+            if (geoCoord) {
+                res.push({
+                    name: msg.stations[i].city,
+                    value: geoCoord.concat()
+                });
+            }
+        }
+        return res;
+    };
+
+</script>
 </body>
 </html>
