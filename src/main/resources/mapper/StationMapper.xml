@@ -7,13 +7,21 @@
         SELECT * FROM station WHERE sid=#{sid}
     </select>
 
-    <select id="findStationBySname" parameterType="String" resultType="station">
+    <select id="findSomeStationBySname" parameterType="String" resultType="station">
         SELECT * FROM station
         <where>
             <if test="sname!=null and sname='' ">
                 AND sname LIKE '%${sname}%'
             </if>
         </where>
+    </select>
+    
+    <select id="findStationBySname" parameterType="String" resultType="station">
+        SELECT * FROM station WHERE sname=#{sname}
+    </select>
+
+    <select id="findAllStation" resultType="station">
+        SELECT * FROM station
     </select>
 
     <insert id="insertStation" parameterType="station">

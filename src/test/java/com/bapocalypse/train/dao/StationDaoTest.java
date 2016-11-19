@@ -32,7 +32,7 @@ public class StationDaoTest extends BaseJunit4Test {
 
     @Test
     public void testFindStationBySname() throws Exception{
-        List<Station> stations = stationDao.findStationBySname("福安站");
+        List<Station> stations = stationDao.findSomeStationBySname("福安站");
         Assert.assertEquals("福建省", stations.get(0).getProvince());
     }
 

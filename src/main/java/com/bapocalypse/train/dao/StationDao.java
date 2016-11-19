@@ -15,7 +15,9 @@ import java.util.List;
 @Repository
 public interface StationDao {
     Station findStationBySid(int sid) throws Exception;
-    List<Station> findStationBySname(@Param(value = "sname") String sname) throws Exception;
+    Station findStationBySname(String sname) throws Exception;
+    List<Station> findSomeStationBySname(@Param(value = "sname") String sname) throws Exception;
+    List<Station> findAllStation() throws Exception;
     boolean insertStation(Station station) throws Exception;
     Integer countsStation() throws Exception;
 }

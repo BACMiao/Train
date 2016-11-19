@@ -1,6 +1,7 @@
 package com.bapocalypse.train.service;
 
 import com.bapocalypse.train.model.Station;
+import java.util.Stack;
 
 /**
  * @package: com.bapocalypse.train.service
@@ -11,4 +12,7 @@ import com.bapocalypse.train.model.Station;
 public interface TrainMapService {
     void initTrainMap() throws Exception;
     void addEdge(Station station1, Station station2);
+    void dfs(String stationName) throws Exception ;
+    boolean hasPathTo(String stationName);
+    Stack<Station> pathTo(String stationName) throws Exception;
 }
