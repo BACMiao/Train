@@ -1,10 +1,15 @@
 package com.bapocalypse.train.serviceImpl;
 
 import com.bapocalypse.train.dao.DistanceDao;
+import com.bapocalypse.train.dao.StationDao;
 import com.bapocalypse.train.model.Distance;
+import com.bapocalypse.train.model.DistanceCustom;
 import com.bapocalypse.train.service.DistanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @package: com.bapocalypse.train.serviceImpl
@@ -15,18 +20,33 @@ import org.springframework.stereotype.Service;
 @Service
 public class DistanceServiceImpl implements DistanceService {
     private DistanceDao distanceDao;
+    private StationDao stationDao;
 
     @Override
     public boolean createDistance(Distance distance) throws Exception {
         return distanceDao.insertDistance(distance);
     }
 
-    public DistanceDao getDistanceDao() {
-        return distanceDao;
+    public List<DistanceCustom> findAllDistance() throws Exception {
+        List<DistanceCustom> dc = new ArrayList<>();
+        List<Distance> distances = distanceDao.findAllDistance();
+        for (Distance distance : distances){
+            DistanceCustom ds = new DistanceCustom();
+            ds.setTime(distance.getTime());
+            ds.setStationName1(stationDao.findStationBySid(distance.getSid1()).getCity());
+            ds.setStationName2(stationDao.findStationBySid(distance.getSid2()).getCity());
+            dc.add(ds);
+        }
+        return dc;
     }
 
     @Autowired
     public void setDistanceDao(DistanceDao distanceDao) {
         this.distanceDao = distanceDao;
+    }
+
+    @Autowired
+    public void setStationDao(StationDao stationDao) {
+        this.stationDao = stationDao;
     }
 }

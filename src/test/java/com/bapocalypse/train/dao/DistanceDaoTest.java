@@ -5,6 +5,8 @@ import com.bapocalypse.train.model.Distance;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,10 +16,15 @@ import java.util.List;
  * @Date: 2016/11/17
  * @Description: DistanceDao的测试类，即DistanceMapper测试类
  */
+@Transactional
+@Rollback(value = false)
 public class DistanceDaoTest extends BaseJunit4Test {
 
     @Autowired
     private DistanceDao distanceDao;
+
+    @Autowired
+    private StationDao stationDao;
 
     @Test
     public void distanceDaoShouldBeInjected(){
@@ -26,10 +33,13 @@ public class DistanceDaoTest extends BaseJunit4Test {
 
     @Test
     public void testInsertDistance() throws Exception{
+        String s1 = "福州站";
+        String s2 = "福清站";
+        int time = 27;
         Distance distance = new Distance();
-        distance.setSid1(4);
-        distance.setSid2(5);
-        distance.setLength(27);
+        distance.setSid1(stationDao.findStationBySname(s1).getSid());
+        distance.setSid2(stationDao.findStationBySname(s2).getSid());
+        distance.setTime(time);
         boolean result = distanceDao.insertDistance(distance);
         Assert.assertTrue(result);
     }

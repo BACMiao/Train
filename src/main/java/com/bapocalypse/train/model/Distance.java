@@ -9,7 +9,7 @@ package com.bapocalypse.train.model;
 public class Distance {
     private int sid1;
     private int sid2;
-    private int length;
+    private int time;
 
     public int getSid1() {
         return sid1;
@@ -27,12 +27,12 @@ public class Distance {
         this.sid2 = sid2;
     }
 
-    public int getLength() {
-        return length;
+    public int getTime() {
+        return time;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setTime(int time) {
+        this.time = time;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Distance {
         return "Distance{" +
                 "sid1=" + sid1 +
                 ", sid2=" + sid2 +
-                ", length=" + length +
+                ", time=" + time +
                 '}';
     }
 }

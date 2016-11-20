@@ -5,51 +5,100 @@
     <title>动车站点地图</title>
 </head>
 <body>
-这是站点地图
-<body>
 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
 <div id="main" style="width: 900px;height:600px;"></div>
-</body>
+
 <script src="/resources/jquery/jquery-1.12.1.min.js"></script>
 <script src="/resources/echarts/echarts.min.js"></script>
 <script>
     var geoCoordMap = {
     };
-    $.get('/station/all',function(msg){
-        for (var i=0; i < msg.stations.length; i++){
-            geoCoordMap[msg.stations[i].city] = [msg.stations[i].longitude, msg.stations[i].latitude];
+    var fujianData = [
+    ];
+    $.get('/distance/all', function(data){
+        for (var i=0; i < data.distances.length; i++){
+            fujianData.push([{name:data.distances[i].stationName1},{name:data.distances[i].stationName2}])
         }
-
-        $.get('/resources/echarts/json/fujian.json', function (fujianJson) {
-            echarts.registerMap('fujian', fujianJson);
-            var chart = echarts.init(document.getElementById('main'));
-            chart.setOption({
-                geo: {
-                    map: 'fujian',
-                    label: {
-                        emphasis: {
-                            show: false
+        $.get('/station/all',function(msg){
+            for (var i=0; i < msg.stations.length; i++){
+                geoCoordMap[msg.stations[i].city] = [msg.stations[i].longitude, msg.stations[i].latitude];
+            }
+            $.get('/resources/echarts/json/fujian.json', function (fujianJson) {
+                echarts.registerMap('fujian', fujianJson);
+                var chart = echarts.init(document.getElementById('main'));
+                chart.setOption({
+                    backgroundColor: '#404a59',
+                    title : {
+                        text: '福建省动车路线图',
+                        subtext: '数据纯属虚构',
+                        left: 'center',
+                        textStyle : {
+                            color: '#fff'
                         }
                     },
-                    itemStyle: {
-                        normal: {
-                            areaColor: '#323c48',
-                            borderColor: '#111'
-                        },
-                        emphasis: {
-                            areaColor: '#2a333d'
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: function (params) {
+                            return params.name;
                         }
-                    }
-                },
+                    },
+                    geo: {
+                        map: 'fujian',
+                        label: {
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                areaColor: '#323c48',
+                                borderColor: '#111'
+                            },
+                            emphasis: {
+                                areaColor: '#2a333d'
+                            }
+                        }
+                    },
 
-                series: [
-                    {
-                        name: 'station',
-                        type: 'scatter',
-                        coordinateSystem: 'geo',
-                        data: convertData(msg)
-                    }
-                ]
+                    series: [
+                        {
+                            name: 'station',
+                            type: 'lines',
+                            zlevel: 2,
+                            lineStyle: {
+                                normal: {
+                                    color: '#ffa022',
+                                    width: 5,
+                                    opacity: 0.6,
+                                    curveness: 0
+                                }
+                            },
+                            data: distanceData(fujianData)
+                        },
+                        {
+                            name: 'station',
+                            type: 'effectScatter',
+                            coordinateSystem: 'geo',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'right',
+                                    formatter: '{b}'
+                                }
+                            },
+                            zlevel: 2,
+                            rippleEffect: {
+                                brushType: 'stroke'
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#46bee9'
+                                }
+                            },
+                            data: convertData(msg)
+                        }
+                    ]
+                });
             });
         });
     });
@@ -61,7 +110,24 @@
             if (geoCoord) {
                 res.push({
                     name: msg.stations[i].city,
-                    value: geoCoord.concat()
+                    value: geoCoord
+                });
+            }
+        }
+        return res;
+    };
+
+    var distanceData = function (data) {
+        var res = [];
+        for (var i = 0; i < data.length; i++) {
+            var dataItem = data[i];
+            var fromCoord = geoCoordMap[dataItem[0].name];
+            var toCoord = geoCoordMap[dataItem[1].name];
+            if (fromCoord && toCoord) {
+                res.push({
+                    fromName: dataItem[0].name,
+                    toName: dataItem[1].name,
+                    coords: [fromCoord, toCoord]
                 });
             }
         }

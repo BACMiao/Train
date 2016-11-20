@@ -14,7 +14,7 @@ import java.util.List;
  * @package: com.bapocalypse.train.controller
  * @Author: 陈淼
  * @Date: 2016/11/19
- * @Description:
+ * @Description: 车站的控制器类
  */
 @Controller
 @RequestMapping("/station")
@@ -27,10 +27,6 @@ public class StationController {
         List<Station> stations = stationService.selectAllStations();
         stationJson.put("stations", stations);
         return stationJson.toJSONString();
-    }
-
-    public StationService getStationService() {
-        return stationService;
     }
 
     @Autowired
