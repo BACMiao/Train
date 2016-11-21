@@ -62,4 +62,12 @@ public class UserDaoTest extends BaseJunit4Test {
         Assert.assertTrue(userDao.deleteUserByUid(1));
     }
 
+    @Test
+    public void testCache1() throws Exception {
+        User user1 = userDao.findUserByUid(1);
+        System.out.println(user1);
+        User user2 = userDao.findUserByUid(1);
+        System.out.println(user2);
+    }
+
 }
