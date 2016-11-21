@@ -7,8 +7,8 @@ package com.bapocalypse.train.model;
  * @Description: 距离的扩展类
  */
 public class DistanceCustom extends Distance {
-    private String stationName1;
-    private String stationName2;
+    private String stationName1;     //站点1的city名
+    private String stationName2;     //站点2的city名
 
     public String getStationName1() {
         return stationName1;
