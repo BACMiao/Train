@@ -14,6 +14,8 @@ public class TrainTime {
     private Time arriveTime;  //到站时间
     private Time departTime;  //出发时间
 
+    private Station station;  //时刻所对应的车站
+
     public int getSid() {
         return sid;
     }
@@ -44,6 +46,14 @@ public class TrainTime {
 
     public void setDepartTime(Time departTime) {
         this.departTime = departTime;
+    }
+
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
     }
 
     @Override

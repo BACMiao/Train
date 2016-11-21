@@ -3,8 +3,36 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bapocalypse.train.dao.TrainTimeDao">
+
+    <!-- 查询列车及所经过的车站 -->
+    <resultMap id="TrainAndTrainTimeResultMap" type="com.bapocalypse.train.model.Train">
+        <!-- 列车信息 -->
+        <id column="tid" property="tid"/>
+
+        <!-- 站点信息，一个列车对应到个时刻，使用collection -->
+        <collection property="trainTimeList" ofType="com.bapocalypse.train.model.TrainTime">
+            <result column="arriveTime" property="arriveTime"/>
+            <result column="departTime" property="departTime"/>
+
+            <!-- 一个时刻表对应一个站点 -->
+            <association property="station" javaType="com.bapocalypse.train.model.Station">
+                <result column="sname" property="sname"/>
+            </association>
+        </collection>
+    </resultMap>
+
     <select id="findAllTime" resultType="trainTime">
         SELECT * FROM traintime
     </select>
 
+    <!-- 查询列车及所经过的车站 -->
+    <select id="findTrainAndTrainTime" resultMap="TrainAndTrainTimeResultMap">
+        SELECT train.tid,
+        station.sname,
+        traintime.arriveTime,
+        traintime.departTime
+        FROM (train, traintime) LEFT JOIN station
+        ON station.sid = traintime.sid AND train.tid = traintime.tid
+        ORDER BY traintime.arriveTime;
+    </select>
 </mapper>

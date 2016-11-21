@@ -15,4 +15,5 @@ import java.util.List;
 @Repository
 public interface TrainTimeDao {
     List<TrainTime> findAllTime() throws Exception;
+    List<Train> findTrainAndTrainTime() throws Exception;
 }

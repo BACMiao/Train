@@ -1,6 +1,7 @@
 package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.BaseJunit4Test;
+import com.bapocalypse.train.model.Station;
 import com.bapocalypse.train.model.Train;
 import com.bapocalypse.train.model.TrainTime;
 import org.junit.Assert;
@@ -27,8 +28,19 @@ public class TrainTimeDaoTest extends BaseJunit4Test{
     @Test
     public void testFindAllTime() throws Exception {
         List<TrainTime> trainTimeList = trainTimeDao.findAllTime();
-        for (TrainTime trainTime : trainTimeList){
-            System.out.println(trainTime);
+        //lambda表达式
+        trainTimeList.forEach(System.out::println);
+    }
+
+    @Test
+    public void testFindTrainAndTrainTime() throws Exception {
+        List<Train> trainList = trainTimeDao.findTrainAndTrainTime();
+        for (Train train : trainList){
+            List<TrainTime> tts = train.getTrainTimeList();
+            for (TrainTime tt : tts){
+                Station station = tt.getStation();
+                System.out.println(station.getSname());
+            }
         }
     }
 }

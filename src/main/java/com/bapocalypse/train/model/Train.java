@@ -1,6 +1,7 @@
 package com.bapocalypse.train.model;
 
 import java.sql.Time;
+import java.util.List;
 
 /**
  * @package: com.bapocalypse.train.model
@@ -14,6 +15,8 @@ public class Train {
     private int endSid;       //终点站id
     private Time startTime;   //始发时间
     private Time endTime;     //终点时间
+
+    private List<TrainTime> trainTimeList;
 
     public String getTid() {
         return tid;
@@ -53,6 +56,14 @@ public class Train {
 
     public void setEndTime(Time endTime) {
         this.endTime = endTime;
+    }
+
+    public List<TrainTime> getTrainTimeList() {
+        return trainTimeList;
+    }
+
+    public void setTrainTimeList(List<TrainTime> trainTimeList) {
+        this.trainTimeList = trainTimeList;
     }
 
     @Override
