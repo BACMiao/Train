@@ -4,12 +4,11 @@ package com.bapocalypse.train.model;
  * @package: com.bapocalypse.train.model
  * @Author: 陈淼
  * @Date: 2016/11/20
- * @Description: 距离的自定义模型类
+ * @Description: 距离的扩展类
  */
-public class DistanceCustom {
+public class DistanceCustom extends Distance {
     private String stationName1;
     private String stationName2;
-    private int time;
 
     public String getStationName1() {
         return stationName1;
@@ -27,20 +26,11 @@ public class DistanceCustom {
         this.stationName2 = stationName2;
     }
 
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
     @Override
     public String toString() {
         return "DistanceCustom{" +
                 "stationName1='" + stationName1 + '\'' +
                 ", stationName2='" + stationName2 + '\'' +
-                ", time=" + time +
                 '}';
     }
 }

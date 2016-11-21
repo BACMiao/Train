@@ -2,6 +2,7 @@ package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.BaseJunit4Test;
 import com.bapocalypse.train.model.Distance;
+import com.bapocalypse.train.model.DistanceCustom;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +53,9 @@ public class DistanceDaoTest extends BaseJunit4Test {
 
     @Test
     public void testFindAllDistance() throws Exception {
-        List<Distance> distances = distanceDao.findAllDistance();
-        for (Distance distance : distances){
-            System.out.println(distance);
+        List<DistanceCustom> distances = distanceDao.findAllDistance();
+        for (DistanceCustom distance : distances){
+            System.out.println(distance +" "+ distance.getTime());
         }
     }
 }

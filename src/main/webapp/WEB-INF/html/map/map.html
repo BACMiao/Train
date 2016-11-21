@@ -11,10 +11,8 @@
 <script src="/resources/jquery/jquery-1.12.1.min.js"></script>
 <script src="/resources/echarts/echarts.min.js"></script>
 <script>
-    var geoCoordMap = {
-    };
-    var fujianData = [
-    ];
+    var geoCoordMap = {};
+    var fujianData = [];
     $.get('/distance/all', function(data){
         for (var i=0; i < data.distances.length; i++){
             fujianData.push([{name:data.distances[i].stationName1},{name:data.distances[i].stationName2}])

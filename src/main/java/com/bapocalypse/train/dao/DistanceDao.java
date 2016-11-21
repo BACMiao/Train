@@ -1,6 +1,7 @@
 package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.model.Distance;
+import com.bapocalypse.train.model.DistanceCustom;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,5 +16,5 @@ import java.util.List;
 public interface DistanceDao {
     boolean insertDistance(Distance distance) throws Exception;
     Integer countsDistance() throws Exception;
-    List<Distance> findAllDistance() throws Exception;
+    List<DistanceCustom> findAllDistance() throws Exception;
 }

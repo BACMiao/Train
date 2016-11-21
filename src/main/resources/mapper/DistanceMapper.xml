@@ -12,8 +12,10 @@
         SELECT count(*) FROM distance
     </select>
     
-    <select id="findAllDistance" resultType="distance">
-        SELECT * FROM distance
+    <select id="findAllDistance" resultType="distanceCustom">
+        SELECT s1.city stationName1, s2.city stationName2, distance.time
+        FROM distance, station AS s1, station AS s2
+        WHERE distance.sid1 = s1.sid AND distance.sid2 = s2.sid
     </select>
 
 </mapper>

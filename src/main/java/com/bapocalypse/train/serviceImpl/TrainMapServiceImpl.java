@@ -3,6 +3,7 @@ package com.bapocalypse.train.serviceImpl;
 import com.bapocalypse.train.dao.DistanceDao;
 import com.bapocalypse.train.dao.StationDao;
 import com.bapocalypse.train.model.Distance;
+import com.bapocalypse.train.model.DistanceCustom;
 import com.bapocalypse.train.model.Station;
 import com.bapocalypse.train.service.TrainMapService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +31,15 @@ public class TrainMapServiceImpl implements TrainMapService {
     public void initTrainMap() throws Exception {
         this.V = stationDao.countsStation();
         adj = new HashMap<>();
-        List<Distance> distances = distanceDao.findAllDistance();  //获得所有连接
+        List<DistanceCustom> distances = distanceDao.findAllDistance();  //获得所有连接
         List<Station> stations = stationDao.findAllStation();      //获得所有站点
         for (Station station : stations){                          //初始化邻接表和marked表
             adj.put(station.getSname(), new ArrayList<>());
             marked.put(station.getSname(), false);
         }
-        for (Distance distance : distances){
-            Station station1 = stationDao.findStationBySid(distance.getSid1());
-            Station station2 = stationDao.findStationBySid(distance.getSid2());
+        for (DistanceCustom distance : distances){
+            Station station1 = stationDao.findStationBySname(distance.getStationName1());
+            Station station2 = stationDao.findStationBySname(distance.getStationName2());
             addEdge(station1, station2);
         }
     }

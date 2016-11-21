@@ -28,16 +28,7 @@ public class DistanceServiceImpl implements DistanceService {
     }
 
     public List<DistanceCustom> findAllDistance() throws Exception {
-        List<DistanceCustom> dc = new ArrayList<>();
-        List<Distance> distances = distanceDao.findAllDistance();
-        for (Distance distance : distances){
-            DistanceCustom ds = new DistanceCustom();
-            ds.setTime(distance.getTime());
-            ds.setStationName1(stationDao.findStationBySid(distance.getSid1()).getCity());
-            ds.setStationName2(stationDao.findStationBySid(distance.getSid2()).getCity());
-            dc.add(ds);
-        }
-        return dc;
+        return distanceDao.findAllDistance();
     }
 
     @Autowired
