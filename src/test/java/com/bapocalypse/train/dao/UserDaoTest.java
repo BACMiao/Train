@@ -1,16 +1,10 @@
 package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.BaseJunit4Test;
-import com.bapocalypse.train.dao.UserDao;
 import com.bapocalypse.train.model.User;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * @package: com.bapocalypse.train.dao
