@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bapocalypse.train.dao.StationDao">
+
+    <!-- 开启本mapper下的namespace下的二级缓存 -->
+    <cache />
+
     <select id="findStationBySid" parameterType="int" resultType="station">
         SELECT * FROM station WHERE sid=#{sid}
     </select>

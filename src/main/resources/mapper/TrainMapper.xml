@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bapocalypse.train.dao.TrainDao">
+
+    <!-- 开启本mapper下的namespace下的二级缓存 -->
+    <cache />
+
     <select id="findTrainByTid" parameterType="String" resultType="train">
         SELECT * FROM train WHERE tid=#{tid}
     </select>

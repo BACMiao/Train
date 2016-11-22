@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bapocalypse.train.dao.DistanceDao">
+
+    <!-- 开启本mapper下的namespace下的二级缓存 -->
+    <cache />
+
     <insert id="insertDistance" parameterType="distance">
         INSERT INTO distance(sid1, sid2, time)
         VALUES (#{sid1}, #{sid2}, #{time})

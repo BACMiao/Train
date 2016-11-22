@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bapocalypse.train.dao.TrainTimeDao">
 
+    <!-- 开启本mapper下的namespace下的二级缓存 -->
+    <cache />
+
     <!-- 查询列车及所经过的车站 -->
     <resultMap id="TrainAndTrainTimeResultMap" type="com.bapocalypse.train.model.Train">
         <!-- 列车信息 -->

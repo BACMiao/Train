@@ -16,4 +16,5 @@ import java.util.List;
 public interface TrainTimeDao {
     List<TrainTime> findAllTime() throws Exception;
     List<Train> findTrainAndTrainTime() throws Exception;
+    List<Train> findTrainByStartSidAndEndSid(int sid1, int sid2) throws Exception;
 }
