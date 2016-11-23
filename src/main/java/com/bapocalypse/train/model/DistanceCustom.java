@@ -1,5 +1,7 @@
 package com.bapocalypse.train.model;
 
+import java.io.Serializable;
+
 /**
  * @package: com.bapocalypse.train.model
  * @Author: 陈淼

@@ -38,4 +38,11 @@
         ON station.sid = traintime.sid AND train.tid = traintime.tid
         ORDER BY traintime.arriveTime;
     </select>
+    
+    <select id="findTrainByStartSidAndEndSid" parameterType="map" resultType="train">
+        SELECT traintime.tid
+        FROM traintime
+        WHERE sid = #{sid1} AND traintime.tid IN
+        (SELECT traintime.tid FROM traintime WHERE sid = #{sid2});
+    </select>
 </mapper>

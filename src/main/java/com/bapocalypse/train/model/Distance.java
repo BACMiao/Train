@@ -1,12 +1,14 @@
 package com.bapocalypse.train.model;
 
+import java.io.Serializable;
+
 /**
  * @package: com.bapocalypse.train.model
  * @Author: 陈淼
  * @Date: 2016/11/17
  * @Description: 两个站点之间的距离实体类
  */
-public class Distance {
+public class Distance implements Serializable {
     private int sid1;     //站点1的id
     private int sid2;     //站点2的id
     private int time;     //两站点的最短路程时间

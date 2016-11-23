@@ -5,6 +5,7 @@ import com.bapocalypse.train.model.TrainTime;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @package: com.bapocalypse.train.dao
@@ -16,5 +17,5 @@ import java.util.List;
 public interface TrainTimeDao {
     List<TrainTime> findAllTime() throws Exception;
     List<Train> findTrainAndTrainTime() throws Exception;
-    List<Train> findTrainByStartSidAndEndSid(int sid1, int sid2) throws Exception;
+    List<Train> findTrainByStartSidAndEndSid(Map<String, Integer> map) throws Exception;
 }

@@ -9,8 +9,11 @@ import java.sql.Date;
  * @Description: 列车安排日期表
  */
 public class TrainDate {
-    private Date date;    //日期
-    private String tid;   //列车id
+    private Date date;           //日期
+    private String tid;          //列车id
+    private int firstSeatNum;    //一等座数量
+    private int secondSeatNum;   //二等座数量
+    private int standNum;        //站票数量
 
     public Date getDate() {
         return date;
@@ -28,11 +31,38 @@ public class TrainDate {
         this.tid = tid;
     }
 
+    public int getFirstSeatNum() {
+        return firstSeatNum;
+    }
+
+    public void setFirstSeatNum(int firstSeatNum) {
+        this.firstSeatNum = firstSeatNum;
+    }
+
+    public int getSecondSeatNum() {
+        return secondSeatNum;
+    }
+
+    public void setSecondSeatNum(int secondSeatNum) {
+        this.secondSeatNum = secondSeatNum;
+    }
+
+    public int getStandNum() {
+        return standNum;
+    }
+
+    public void setStandNum(int standNum) {
+        this.standNum = standNum;
+    }
+
     @Override
     public String toString() {
         return "TrainDate{" +
                 "date=" + date +
                 ", tid='" + tid + '\'' +
+                ", firstSeatNum=" + firstSeatNum +
+                ", secondSeatNum=" + secondSeatNum +
+                ", standNum=" + standNum +
                 '}';
     }
 }

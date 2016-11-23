@@ -1,12 +1,14 @@
 package com.bapocalypse.train.model;
 
+import java.io.Serializable;
+
 /**
  * @package: com.bapocalypse.train.model
  * @Author: 陈淼
  * @Date: 2016/11/14
  * @Description: 车站的模型类
  */
-public class Station {
+public class Station implements Serializable {
     private int sid;
     private String sname;     //车站名
     private String province;  //省份

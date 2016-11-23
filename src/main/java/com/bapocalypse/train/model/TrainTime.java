@@ -1,5 +1,6 @@
 package com.bapocalypse.train.model;
 
+import java.io.Serializable;
 import java.sql.Time;
 
 /**
@@ -8,7 +9,7 @@ import java.sql.Time;
  * @Date: 2016/11/21
  * @Description: 时刻表的模型类
  */
-public class TrainTime {
+public class TrainTime implements Serializable {
     private int sid;          //站点id
     private String tid;       //列车id
     private Time arriveTime;  //到站时间

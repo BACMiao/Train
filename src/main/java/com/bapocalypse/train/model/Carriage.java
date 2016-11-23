@@ -8,7 +8,7 @@ package com.bapocalypse.train.model;
  */
 public class Carriage {
     private int cid;            //车厢id
-    private int tid;            //列车id
+    private String tid;            //列车id
     private int totalNumber;    //搭载人数
     private int seatNumber;     //座位数
     private String description; //车厢描述
@@ -21,11 +21,11 @@ public class Carriage {
         this.cid = cid;
     }
 
-    public int getTid() {
+    public String getTid() {
         return tid;
     }
 
-    public void setTid(int tid) {
+    public void setTid(String tid) {
         this.tid = tid;
     }
 

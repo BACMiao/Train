@@ -1,5 +1,6 @@
 package com.bapocalypse.train.model;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @Date: 2016/11/20
  * @Description: 列车的模型类
  */
-public class Train {
+public class Train implements Serializable {
     private String tid;       //列车id
     private int startSid;     //始发站id
     private int endSid;       //终点站id

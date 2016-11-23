@@ -8,7 +8,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @package: com.bapocalypse.train.dao
@@ -42,5 +44,14 @@ public class TrainTimeDaoTest extends BaseJunit4Test{
                 System.out.println(station.getSname());
             }
         }
+    }
+
+    @Test
+    public void testFindTrainByStartSidAndEndSid() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("sid1", 6);
+        map.put("sid2", 12);
+        List<Train> trains = trainTimeDao.findTrainByStartSidAndEndSid(map);
+        trains.forEach(System.out::println);
     }
 }
