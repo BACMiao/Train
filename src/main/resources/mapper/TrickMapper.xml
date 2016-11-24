@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bapocalypse.train.dao.TrickDao">
 
-    <select id="createTrick" parameterType="trick">
-        INSERT INTO trick(trickId, uid, tid, cid, seatId, startSid, endSid, date, state)
-        VALUES (#{trickId}, #{uid}, #{tid}, #{cid}, #{seatId}, #{startSid}, #{endSid}, #{date}, #{state})
-    </select>
+    <insert id="createTrick" parameterType="trick">
+        INSERT INTO trick(uid, tid, cid, seatId, startSid, endSid, date, state)
+        VALUES (#{uid}, #{tid}, #{cid}, #{seatId}, #{startSid}, #{endSid}, #{date}, #{state})
+    </insert>
 
 </mapper>

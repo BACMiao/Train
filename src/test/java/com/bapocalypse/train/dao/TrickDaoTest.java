@@ -4,16 +4,15 @@ import com.bapocalypse.train.BaseJunit4Test;
 import com.bapocalypse.train.model.Station;
 import com.bapocalypse.train.model.Train;
 import com.bapocalypse.train.model.Trick;
+import com.bapocalypse.train.util.DateUtil;
 import com.bapocalypse.train.util.UUIDGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @package: com.bapocalypse.train.dao
@@ -39,28 +38,18 @@ public class TrickDaoTest extends BaseJunit4Test {
     @Test
     public void testCreateTrick() throws Exception {
         Trick trick = new Trick();
-        trick.setTrickId(UUIDGenerator.getUUID());
         trick.setUid(1);
         Station station1 = stationDao.findStationBySname("福安站");
         Station station2 = stationDao.findStationBySname("厦门站");
         trick.setStartSid(station1.getSid());
         trick.setEndSid(station2.getSid());
         trick.setState(1);
-        Map<String, Integer> map = new HashMap<>();
-        map.put("sid1", station1.getSid());
-        map.put("sid2", station2.getSid());
-        List<Train> trains = trainTimeDao.findTrainByStartSidAndEndSid(map);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        List<Train> trainList = trainDateDao.findAllTrainsByDate(sdf.format(new Date()));
-//        for (Train train : trainList){
-//            for (Train train1 : trains){
-//                if (train.getTid().equals(train1.getTid())){
-//
-//                }
-//            }
-//        }
-
-        trickDao.createTrick(trick);
+        trick.setTid("D6332");
+        trick.setDate(DateUtil.strToDate("2016-11-24"));
+        trick.setCid(1);
+        trick.setSeatId("1A");
+        boolean result = trickDao.createTrick(trick);
+        Assert.assertEquals(true, result);
     }
 
 }

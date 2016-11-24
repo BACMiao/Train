@@ -4,8 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bapocalypse.train.dao.TrainDateDao">
 
-    <select id="findAllTrainsByDate" parameterType="String" resultType="trainDate">
+    <select id="findAllTrainsByDate" parameterType="date" resultType="trainDate">
         SELECT * FROM traindate WHERE date = #{date}
     </select>
+
+    <update id="reduceFirstSeatNumber">
+        UPDATE traindate SET firstSeatNum = firstSeatNum - 1
+        WHERE tid = #{tid} AND date = #{date} AND firstSeatNum > 0
+    </update>
 
 </mapper>

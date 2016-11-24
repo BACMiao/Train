@@ -10,7 +10,6 @@ import java.sql.Date;
  * @Description: 火车票的模型类
  */
 public class Trick {
-    private String trickId;  //车票id
     private int uid;         //用户id
     private String tid;      //列车id
     private int cid;         //车厢id
@@ -19,14 +18,6 @@ public class Trick {
     private int endSid;      //到达站点id
     private Date date;       //日期
     private int state;       //车票状态
-
-    public String getTrickId() {
-        return trickId;
-    }
-
-    public void setTrickId(String trickId) {
-        this.trickId = trickId;
-    }
 
     public int getUid() {
         return uid;
@@ -95,8 +86,7 @@ public class Trick {
     @Override
     public String toString() {
         return "Trick{" +
-                "trickId='" + trickId + '\'' +
-                ", uid=" + uid +
+                "uid=" + uid +
                 ", tid='" + tid + '\'' +
                 ", cid=" + cid +
                 ", seatId='" + seatId + '\'' +
