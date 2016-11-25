@@ -33,11 +33,11 @@ public class TrainMapServiceImpl implements TrainMapService {
         adj = new HashMap<>();
         List<DistanceCustom> distances = distanceDao.findAllDistance();  //获得所有连接
         List<Station> stations = stationDao.findAllStation();      //获得所有站点
-        for (Station station : stations){                          //初始化邻接表和marked表
+        for (Station station : stations) {                          //初始化邻接表和marked表
             adj.put(station.getSname(), new ArrayList<>());
             marked.put(station.getSname(), false);
         }
-        for (DistanceCustom distance : distances){
+        for (DistanceCustom distance : distances) {
             Station station1 = stationDao.findStationBySname(distance.getStationName1());
             Station station2 = stationDao.findStationBySname(distance.getStationName2());
             addEdge(station1, station2);
@@ -45,10 +45,10 @@ public class TrainMapServiceImpl implements TrainMapService {
     }
 
     /**
-     * @funtion addEdge
-     * @Description 向图中添加一条边station1-station2
      * @param station1 站点1
      * @param station2 站点2
+     * @funtion addEdge
+     * @Description 向图中添加一条边station1-station2
      */
     @Override
     public void addEdge(Station station1, Station station2) {
@@ -58,18 +58,18 @@ public class TrainMapServiceImpl implements TrainMapService {
     }
 
     /**
-     * @funtion dfs
-     * @Description 深度优先查找算法
      * @param stationName 指定站点名
      * @throws Exception
+     * @funtion dfs
+     * @Description 深度优先查找算法
      */
     @Override
     public void dfs(String stationName) throws Exception {
         marked.put(stationName, true);
         Station station = stationDao.findStationBySname(stationName);
         //将所有与目标站点相邻的站点标为true，并下一个站点连接的上一个顶点
-        for (Station station1 : getAdj(station.getSname())){
-            if (!marked.get(station1.getSname())){
+        for (Station station1 : getAdj(station.getSname())) {
+            if (!marked.get(station1.getSname())) {
                 edgeTo.put(station1.getSname(), station.getSname());
                 dfs(station1.getSname());
             }
@@ -77,26 +77,26 @@ public class TrainMapServiceImpl implements TrainMapService {
     }
 
     /**
-     * @funtion getAdj
-     * @Description 返回和指定站点相邻的所有站点
      * @param stationName 指定站点名
      * @return 站点列表
+     * @funtion getAdj
+     * @Description 返回和指定站点相邻的所有站点
      */
     public List<Station> getAdj(String stationName) {
         return adj.get(stationName);
     }
 
     @Override
-    public boolean hasPathTo(String stationName){
+    public boolean hasPathTo(String stationName) {
         return marked.get(stationName);
     }
 
     /**
-     * @funtion pathTo
-     * @Description 源站到指定站的路径，如果不存在返回空
      * @param stationName 指定站名
      * @return 路径列表
      * @throws Exception
+     * @funtion pathTo
+     * @Description 源站到指定站的路径，如果不存在返回空
      */
     @Override
     public Stack<Station> pathTo(String stationName) throws Exception {
@@ -104,9 +104,9 @@ public class TrainMapServiceImpl implements TrainMapService {
             return null;
         Stack<Station> path = new Stack<>();
         //x = edgeTo.get(x):x顶点所连接的上一个顶点
-        for (String x = stationName; marked.get(x); x = edgeTo.get(x)){
+        for (String x = stationName; marked.get(x); x = edgeTo.get(x)) {
             path.push(stationDao.findStationBySname(x));
-            if ( edgeTo.get(x) == null){
+            if (edgeTo.get(x) == null) {
                 break;
             }
         }

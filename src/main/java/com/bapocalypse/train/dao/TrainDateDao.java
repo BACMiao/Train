@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Repository
 public interface TrainDateDao {
-    List<Train> findAllTrainsByDate(Date date) throws Exception;
+    List<Train> findAllTrainsByDate(Date date);
 
     /**
      * @funtion reduceFirstSeatNumber

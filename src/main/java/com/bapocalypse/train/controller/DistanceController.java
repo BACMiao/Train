@@ -22,7 +22,8 @@ public class DistanceController {
     private DistanceService distanceService;
 
     @RequestMapping(value = "/all", produces = "application/json;charset=UTF-8")
-    public @ResponseBody
+    public
+    @ResponseBody
     String getAllDistances() throws Exception {
         JSONObject distanceJson = new JSONObject();
         List<DistanceCustom> distanceCustoms = distanceService.findAllDistance();

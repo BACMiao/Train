@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @Description: 用户操作实现类
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
 
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean loginUser(String username, String password) throws Exception {
         User user = userDao.findUserByUsername(username);
-        if (user != null && !user.getPassword().equals("")){
+        if (user != null && !user.getPassword().equals("")) {
             return user.getPassword().equals(password);
         } else {
             return false;

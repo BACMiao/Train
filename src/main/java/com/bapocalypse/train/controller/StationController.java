@@ -22,7 +22,9 @@ public class StationController {
     private StationService stationService;
 
     @RequestMapping(value = "/all", produces = "application/json;charset=UTF-8")
-    public @ResponseBody String getAllStations() throws Exception {
+    public
+    @ResponseBody
+    String getAllStations() throws Exception {
         JSONObject stationJson = new JSONObject();
         List<Station> stations = stationService.selectAllStations();
         stationJson.put("stations", stations);

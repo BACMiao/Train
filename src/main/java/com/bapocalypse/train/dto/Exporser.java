@@ -21,15 +21,22 @@ public class Exporser {
         this.tid = tid;
     }
 
+    public Exporser(boolean exposed, String tid, Date date, long now) {
+        this.exposed = exposed;
+        this.tid = tid;
+        this.date = date;
+        this.now = now;
+    }
+
     public Exporser(boolean exposed, Date date, long now) {
         this.exposed = exposed;
         this.date = date;
         this.now = now;
     }
 
-    public Exporser(boolean exposed, String tid) {
+    public Exporser(boolean exposed, Date date) {
         this.exposed = exposed;
-        this.tid = tid;
+        this.date = date;
     }
 
     public boolean isExposed() {

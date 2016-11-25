@@ -35,21 +35,25 @@ public class UserController {
     @RequestMapping(value = "/{uid}",
             method = RequestMethod.GET,
             produces = "application/json;charset=UTF-8")
-    public @ResponseBody String getUser(@PathVariable("uid") Integer uid) throws Exception {
+    public
+    @ResponseBody
+    String getUser(@PathVariable("uid") Integer uid) throws Exception {
         JSONObject userJson = new JSONObject();
         User user = userService.findUserByUid(uid);
-        userJson.put("user",user);
+        userJson.put("user", user);
         return userJson.toJSONString();
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseStatus(HttpStatus.CREATED)
-    public @ResponseBody String createUser(@Valid User user, BindingResult bindingResult,
-                                           HttpServletResponse response)throws Exception{
+    public
+    @ResponseBody
+    String createUser(@Valid User user, BindingResult bindingResult,
+                      HttpServletResponse response) throws Exception {
         String error = "";
         boolean result = false;
         JSONObject userJson = new JSONObject();
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             List<ObjectError> allErrors = bindingResult.getAllErrors();
             for (ObjectError e : allErrors) {
                 error = String.join(";", e.getDefaultMessage());
@@ -78,33 +82,35 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
-    public @ResponseBody String loginUser(HttpServletRequest request,
-                                          String username,
-                                          String password,
-                                          String location) throws Exception {
+    public
+    @ResponseBody
+    String loginUser(HttpServletRequest request,
+                     String username,
+                     String password,
+                     String location) throws Exception {
         JSONObject loginJson = new JSONObject();
         Cookie[] cookies = request.getCookies();
         Cookie note = null;
-        for (Cookie cookie : cookies){
-            if (Objects.equals(cookie.getName(), "note")){
+        for (Cookie cookie : cookies) {
+            if (Objects.equals(cookie.getName(), "note")) {
                 note = cookie;
                 break;
             }
         }
         boolean result = userService.loginUser(username, password);
         loginJson.put("result", result);
-        if (!result){
+        if (!result) {
             return loginJson.toJSONString();
         }
-        if (null == note){
+        if (null == note) {
             loginJson.put("result", false);
         } else {
             ImageResult ir = Cache.get(note.getValue());
             Cache.remove(note.getName());
-            if (null == location && "".equals(location)){
+            if (null == location && "".equals(location)) {
                 loginJson.put("result", false);
             }
-            if (validate(location, ir)){
+            if (validate(location, ir)) {
                 loginJson.put("result", true);
             } else {
                 loginJson.put("result", false);
@@ -115,7 +121,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/identify", produces = "application/json;charset=UTF-8")
-    public @ResponseBody String identify(HttpServletRequest request,HttpServletResponse response) throws Exception{
+    public
+    @ResponseBody
+    String identify(HttpServletRequest request, HttpServletResponse response) throws Exception {
         JSONObject imageJson = new JSONObject();
         ImageResult ir = Image.generateImage(request);
         imageJson.put("file", ir.getName());
@@ -126,54 +134,51 @@ public class UserController {
         return imageJson.toJSONString();
     }
 
-    private boolean validate(String locationString, ImageResult ir){
+    private boolean validate(String locationString, ImageResult ir) {
         String[] resultArray = locationString.split(";");
-        if (resultArray.length != ir.getKeySet().size()){
+        if (resultArray.length != ir.getKeySet().size()) {
             return false;
         }
         int[][] array = new int[resultArray.length][2];
-        for (int i = 0; i < resultArray.length; i++){
+        for (int i = 0; i < resultArray.length; i++) {
             String[] temp = resultArray[i].split(",");
             array[i][0] = Integer.parseInt(temp[0]) + 150 - 10;
             array[i][1] = Integer.parseInt(temp[1]) + 300;
         }
 
-        for (int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             int location = location(array[i][1], array[i][0]);
-            if (!ir.getKeySet().contains(location)){
+            if (!ir.getKeySet().contains(location)) {
                 return false;
             }
         }
         return true;
     }
 
-    private static int location(int x, int y){
-        if (y >= 0 && y <75){
+    private static int location(int x, int y) {
+        if (y >= 0 && y < 75) {
             return xLocation(x);
-        }
-        else if (y >= 75 && y <= 150){
+        } else if (y >= 75 && y <= 150) {
             return xLocation(x) + 4;
         } else {
             return -1;
         }
     }
 
-    private static int xLocation(int x){
-        if (x >= 0 && x <75){
+    private static int xLocation(int x) {
+        if (x >= 0 && x < 75) {
             return 0;
-        }
-        else if (x >= 75 && x < 150){
+        } else if (x >= 75 && x < 150) {
             return 1;
-        }
-        else if (x >= 150 && x < 225){
+        } else if (x >= 150 && x < 225) {
             return 2;
-        }
-        else if (x >= 225 && x <= 300){
+        } else if (x >= 225 && x <= 300) {
             return 3;
         } else {
             return -1;
         }
     }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
