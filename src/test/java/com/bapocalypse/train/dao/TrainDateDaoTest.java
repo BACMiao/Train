@@ -38,4 +38,18 @@ public class TrainDateDaoTest extends BaseJunit4Test {
         int updateCount = trainDateDao.reduceFirstSeatNumber("D6332", date);
         Assert.assertEquals(1, updateCount);
     }
+
+    @Test
+    public void testReduceSecondSeatNumber(){
+        java.sql.Date date = DateUtil.strToDate("2016-11-24");
+        int updateCount = trainDateDao.reduceSecondSeatNumber("D6332", date);
+        Assert.assertEquals(1, updateCount);
+    }
+
+    @Test
+    public void testReduceStandNumber(){
+        java.sql.Date date = DateUtil.strToDate("2016-11-24");
+        int updateCount = trainDateDao.reduceStandNumber("D6332", date);
+        Assert.assertEquals(1, updateCount);
+    }
 }

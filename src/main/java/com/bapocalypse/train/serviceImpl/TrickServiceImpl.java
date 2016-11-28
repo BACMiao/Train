@@ -4,6 +4,7 @@ import com.bapocalypse.train.dao.TrainDateDao;
 import com.bapocalypse.train.dao.TrickDao;
 import com.bapocalypse.train.dto.Exporser;
 import com.bapocalypse.train.dto.TrickExecution;
+import com.bapocalypse.train.enums.BuyTrickStateEnum;
 import com.bapocalypse.train.exception.RepeatBuyException;
 import com.bapocalypse.train.exception.TrickCloseException;
 import com.bapocalypse.train.exception.TrickException;
@@ -30,8 +31,6 @@ public class TrickServiceImpl implements TrickService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private TrickDao trickDao;
     private TrainDateDao trainDateDao;
-    //MD5盐值
-    private final String salt = "jsdkajsklj1-02983848p][;/./wqjs]";
 
     @Override
     public Exporser exportBuyTrickUrl(String tid, Date date) {
@@ -59,14 +58,59 @@ public class TrickServiceImpl implements TrickService {
         return new Exporser(true, md5, tid);
     }
 
-    private String getMD5(String tid, Date date){
+    private String getMD5(String tid, Date date) {
+        String salt = "jsdkajsklj1-02983848p][;/./wqjs]";
         String base = tid + "/" + date.toString() + salt;
         return DigestUtils.md5DigestAsHex(base.getBytes());
     }
 
     @Override
-    public TrickExecution executeBuyTrick(Trick trick, String md5) throws TrickException, RepeatBuyException, TrickCloseException {
-        return null;
+    public TrickExecution executeBuyTrick(Trick trick, String level, String md5)
+            throws TrickException, RepeatBuyException, TrickCloseException {
+        if (md5 == null || md5.equals(getMD5(trick.getTid(), trick.getDate()))) {
+            throw new TrickException("buy trick date rewrite");
+        }
+        //执行购票逻辑，减票数+记录购买行为
+        int updateCount;
+        try {
+            switch (level) {
+                case "一等座": {
+                    updateCount = trainDateDao.reduceFirstSeatNumber(trick.getTid(), trick.getDate());
+                    break;
+                }
+                case "二等座": {
+                    updateCount = trainDateDao.reduceSecondSeatNumber(trick.getTid(), trick.getDate());
+                    break;
+                }
+                case "站票": {
+                    updateCount = trainDateDao.reduceStandNumber(trick.getTid(), trick.getDate());
+                    break;
+                }
+                default:
+                    throw new TrickException("no trick");
+            }
+            if (updateCount <= 0) {
+                //没有更新到记录，购票结束
+                throw new TrickCloseException("trick is closed");
+            } else {
+                //记录购买行为
+                int insertCount = trickDao.createTrick(trick);
+                if (insertCount <= 0) {
+                    //重复购买
+                    throw new RepeatBuyException("buy repeat");
+                } else {
+                    //购买成功
+                    Trick trick1 = trickDao.findTrickByPrimary(trick.getUid(), trick.getTid(), trick.getDate());
+                    return new TrickExecution(trick1.getTid(), trick1.getDate(), BuyTrickStateEnum.SUCCESS, trick1);
+                }
+            }
+        } catch (TrickCloseException | RepeatBuyException tce) {
+            throw tce;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            //所有编译期异常转换为运行期异常
+            throw new TrickException("buy trick inner error:" + e.getMessage());
+        }
     }
 
     @Autowired

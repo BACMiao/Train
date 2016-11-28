@@ -25,4 +25,6 @@ public interface TrainDateDao {
      * @return 如果影响行数>1，表示更新的记录行数
      */
     int reduceFirstSeatNumber(@Param("tid") String tid, @Param("date") Date date);
+    int reduceSecondSeatNumber(@Param("tid") String tid, @Param("date") Date date);
+    int reduceStandNumber(@Param("tid") String tid, @Param("date") Date date);
 }

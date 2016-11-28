@@ -28,12 +28,13 @@ public interface TrickService {
     /**
      * @funtion executeBuyTrick
      * @Description 执行购票业务
-     * @param trick 所选择的票
+     * @param trick 车票对象
+     * @param level 座位等级
      * @param md5 md5加密方式
      * @return 购买车票后的结果
      * @throws TrickException 购票相关业务异常
      * @throws RepeatBuyException 重复购买异常
      * @throws TrickCloseException 购票关闭异常
      */
-    TrickExecution executeBuyTrick(Trick trick, String md5) throws TrickException, RepeatBuyException, TrickCloseException;
+    TrickExecution executeBuyTrick(Trick trick, String level, String md5) throws TrickException, RepeatBuyException, TrickCloseException;
 }

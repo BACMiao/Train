@@ -12,5 +12,13 @@
         UPDATE traindate SET firstSeatNum = firstSeatNum - 1
         WHERE tid = #{tid} AND date = #{date} AND firstSeatNum > 0
     </update>
+    <update id="reduceSecondSeatNumber">
+        UPDATE traindate SET secondSeatNum = secondSeatNum -1
+        WHERE tid = #{tid} AND date = #{date} AND secondSeatNum > 0
+    </update>
+    <update id="reduceStandNumber">
+        UPDATE traindate SET standNum = standNum - 1
+        WHERE tid = #{tid} AND date = #{date} AND standNum > 0
+    </update>
 
 </mapper>

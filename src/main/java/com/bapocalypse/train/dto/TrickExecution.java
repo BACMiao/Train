@@ -1,5 +1,6 @@
 package com.bapocalypse.train.dto;
 
+import com.bapocalypse.train.enums.BuyTrickStateEnum;
 import com.bapocalypse.train.model.Trick;
 
 import java.sql.Date;
@@ -17,18 +18,18 @@ public class TrickExecution {
     private String stateInfo; //状态表示
     private Trick trick;      //购买成功后的车票
 
-    public TrickExecution(String tid, Date date, int state, String stateInfo) {
+    public TrickExecution(String tid, Date date, BuyTrickStateEnum stateEnum) {
         this.tid = tid;
         this.date = date;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = stateEnum.getState();
+        this.stateInfo = stateEnum.getStateInfo();
     }
 
-    public TrickExecution(String tid, Date date, int state, String stateInfo, Trick trick) {
+    public TrickExecution(String tid, Date date, BuyTrickStateEnum stateEnum, Trick trick) {
         this.tid = tid;
         this.date = date;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = stateEnum.getState();
+        this.stateInfo = stateEnum.getStateInfo();
         this.trick = trick;
     }
 

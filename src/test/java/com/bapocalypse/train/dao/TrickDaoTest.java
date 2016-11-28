@@ -48,8 +48,14 @@ public class TrickDaoTest extends BaseJunit4Test {
         trick.setDate(DateUtil.strToDate("2016-11-24"));
         trick.setCid(1);
         trick.setSeatId("1A");
-        boolean result = trickDao.createTrick(trick);
-        Assert.assertEquals(true, result);
+        int insertCount = trickDao.createTrick(trick);
+        Assert.assertEquals(1, insertCount);
+    }
+
+    @Test
+    public void testFindTrickByPrimary(){
+        Trick trick = trickDao.findTrickByPrimary(1, "D6332", DateUtil.strToDate("2016-11-26"));
+        System.out.println(trick);
     }
 
 }

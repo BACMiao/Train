@@ -9,4 +9,8 @@
         VALUES (#{uid}, #{tid}, #{cid}, #{seatId}, #{startSid}, #{endSid}, #{date}, #{state})
     </insert>
 
+    <select id="findTrickByPrimary" resultType="trick">
+        SELECT * FROM trick
+        WHERE uid = #{uid} AND tid = #{tid} AND date = #{date}
+    </select>
 </mapper>

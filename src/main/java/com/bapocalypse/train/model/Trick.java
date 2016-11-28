@@ -19,6 +19,20 @@ public class Trick {
     private Date date;       //日期
     private int state;       //车票状态
 
+    public Trick() {
+    }
+
+    public Trick(int uid, String tid, int cid, String seatId, int startSid, int endSid, Date date, int state) {
+        this.uid = uid;
+        this.tid = tid;
+        this.cid = cid;
+        this.seatId = seatId;
+        this.startSid = startSid;
+        this.endSid = endSid;
+        this.date = date;
+        this.state = state;
+    }
+
     public int getUid() {
         return uid;
     }
