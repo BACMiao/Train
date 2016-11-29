@@ -1,6 +1,6 @@
 package com.bapocalypse.train.service;
 
-import com.bapocalypse.train.dto.Exporser;
+import com.bapocalypse.train.dto.Exposer;
 import com.bapocalypse.train.dto.TrickExecution;
 import com.bapocalypse.train.exception.RepeatBuyException;
 import com.bapocalypse.train.exception.TrickCloseException;
@@ -25,7 +25,7 @@ public interface TrickService {
      * @param date 日期
      * @return 暴露购买车票地址DTO
      */
-    Exporser exportBuyTrickUrl(String tid, Date date);
+    Exposer exportBuyTrickUrl(String tid, Date date);
 
     /**
      * @funtion executeBuyTrick

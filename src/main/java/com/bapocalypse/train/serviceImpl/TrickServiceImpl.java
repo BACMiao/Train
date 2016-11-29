@@ -2,7 +2,7 @@ package com.bapocalypse.train.serviceImpl;
 
 import com.bapocalypse.train.dao.TrainDateDao;
 import com.bapocalypse.train.dao.TrickDao;
-import com.bapocalypse.train.dto.Exporser;
+import com.bapocalypse.train.dto.Exposer;
 import com.bapocalypse.train.dto.TrickExecution;
 import com.bapocalypse.train.enums.BuyTrickStateEnum;
 import com.bapocalypse.train.exception.RepeatBuyException;
@@ -38,10 +38,10 @@ public class TrickServiceImpl implements TrickService {
     }
 
     @Override
-    public Exporser exportBuyTrickUrl(String tid, Date date) {
+    public Exposer exportBuyTrickUrl(String tid, Date date) {
         List<TrainDate> trainList = trainDateDao.findAllTrainsByDate(date);
         if (trainList.size() < 1) {
-            return new Exporser(false, date);
+            return new Exposer(false, date);
         }
         int i = 0;
         do {
@@ -53,14 +53,14 @@ public class TrickServiceImpl implements TrickService {
 
         //若i > trainList.size()，说明在当天列车列表中找不到指定列车
         if (i > trainList.size()) {
-            return new Exporser(false, date);
+            return new Exposer(false, date);
         }
         Date nowDate = new Date(System.currentTimeMillis());
         if (nowDate.getTime() > date.getTime()) {
-            return new Exporser(false, tid, date, nowDate.getTime());
+            return new Exposer(false, tid, date, nowDate.getTime());
         }
         String md5 = getMD5(tid, date);
-        return new Exporser(true, md5, tid);
+        return new Exposer(true, md5, tid);
     }
 
     private String getMD5(String tid, Date date) {

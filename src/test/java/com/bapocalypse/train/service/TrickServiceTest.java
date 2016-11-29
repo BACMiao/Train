@@ -1,7 +1,7 @@
 package com.bapocalypse.train.service;
 
 import com.bapocalypse.train.BaseJunit4Test;
-import com.bapocalypse.train.dto.Exporser;
+import com.bapocalypse.train.dto.Exposer;
 import com.bapocalypse.train.dto.TrickExecution;
 import com.bapocalypse.train.po.Trick;
 import com.bapocalypse.train.util.DateUtil;
@@ -38,8 +38,8 @@ public class TrickServiceTest extends BaseJunit4Test {
 
     @Test
     public void exportBuyTrickUrl() throws Exception {
-        Exporser exporser = trickService.exportBuyTrickUrl("D6332", DateUtil.strToDate("2016-11-30"));
-        System.out.println(exporser);
+        Exposer exposer = trickService.exportBuyTrickUrl("D6332", DateUtil.strToDate("2016-11-30"));
+        System.out.println(exposer);
     }
 
     @Test

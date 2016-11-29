@@ -8,33 +8,33 @@ import java.sql.Date;
  * @Date: 2016/11/25
  * @Description: 暴露购买车票地址DTO
  */
-public class Exporser {
+public class Exposer {
     private boolean exposed;  //是否开启售票
     private String md5;       //使用md5加密
     private String tid;       //列车id
     private Date date;        //用户选择日期
     private long now;         //当前系统时间（毫秒）
 
-    public Exporser(boolean exposed, String md5, String tid) {
+    public Exposer(boolean exposed, String md5, String tid) {
         this.exposed = exposed;
         this.md5 = md5;
         this.tid = tid;
     }
 
-    public Exporser(boolean exposed, String tid, Date date, long now) {
+    public Exposer(boolean exposed, String tid, Date date, long now) {
         this.exposed = exposed;
         this.tid = tid;
         this.date = date;
         this.now = now;
     }
 
-    public Exporser(boolean exposed, Date date, long now) {
+    public Exposer(boolean exposed, Date date, long now) {
         this.exposed = exposed;
         this.date = date;
         this.now = now;
     }
 
-    public Exporser(boolean exposed, Date date) {
+    public Exposer(boolean exposed, Date date) {
         this.exposed = exposed;
         this.date = date;
     }
@@ -81,7 +81,7 @@ public class Exporser {
 
     @Override
     public String toString() {
-        return "Exporser{" +
+        return "Exposer{" +
                 "exposed=" + exposed +
                 ", md5='" + md5 + '\'' +
                 ", tid='" + tid + '\'' +
