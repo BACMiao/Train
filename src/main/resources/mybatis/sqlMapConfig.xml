@@ -11,6 +11,6 @@
 
     <!-- 配置别名 -->
     <typeAliases>
-        <package name="com.bapocalypse.train.model"/>
+        <package name="com.bapocalypse.train.po"/>
     </typeAliases>
 </configuration>

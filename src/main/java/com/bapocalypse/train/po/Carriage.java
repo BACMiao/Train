@@ -1,7 +1,7 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/21
  * @Description: 车厢的模型类

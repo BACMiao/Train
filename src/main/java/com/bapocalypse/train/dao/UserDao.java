@@ -1,6 +1,6 @@
 package com.bapocalypse.train.dao;
 
-import com.bapocalypse.train.model.User;
+import com.bapocalypse.train.po.User;
 import org.springframework.stereotype.Repository;
 
 /**

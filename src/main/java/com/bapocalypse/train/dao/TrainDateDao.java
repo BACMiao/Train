@@ -1,6 +1,6 @@
 package com.bapocalypse.train.dao;
 
-import com.bapocalypse.train.model.Train;
+import com.bapocalypse.train.po.TrainDate;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Repository
 public interface TrainDateDao {
-    List<Train> findAllTrainsByDate(Date date);
+    List<TrainDate> findAllTrainsByDate(Date date);
 
     /**
      * @funtion reduceFirstSeatNumber

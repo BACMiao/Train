@@ -1,7 +1,7 @@
 package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.BaseJunit4Test;
-import com.bapocalypse.train.model.User;
+import com.bapocalypse.train.po.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

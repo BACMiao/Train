@@ -1,7 +1,7 @@
 package com.bapocalypse.train.serviceImpl;
 
 import com.bapocalypse.train.dao.UserDao;
-import com.bapocalypse.train.model.User;
+import com.bapocalypse.train.po.User;
 import com.bapocalypse.train.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,10 @@
 package com.bapocalypse.train.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.bapocalypse.train.model.Cache;
+import com.bapocalypse.train.po.Cache;
 import com.bapocalypse.train.util.Image;
-import com.bapocalypse.train.model.ImageResult;
-import com.bapocalypse.train.model.User;
+import com.bapocalypse.train.po.ImageResult;
+import com.bapocalypse.train.po.User;
 import com.bapocalypse.train.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

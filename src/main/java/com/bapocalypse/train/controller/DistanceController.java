@@ -1,7 +1,7 @@
 package com.bapocalypse.train.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.bapocalypse.train.model.DistanceCustom;
+import com.bapocalypse.train.po.DistanceCustom;
 import com.bapocalypse.train.service.DistanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,10 +1,10 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import java.io.Serializable;
 import java.sql.Time;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/21
  * @Description: 时刻表的模型类

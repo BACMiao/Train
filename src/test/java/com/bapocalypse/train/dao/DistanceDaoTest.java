@@ -1,8 +1,8 @@
 package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.BaseJunit4Test;
-import com.bapocalypse.train.model.Distance;
-import com.bapocalypse.train.model.DistanceCustom;
+import com.bapocalypse.train.po.Distance;
+import com.bapocalypse.train.po.DistanceCustom;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

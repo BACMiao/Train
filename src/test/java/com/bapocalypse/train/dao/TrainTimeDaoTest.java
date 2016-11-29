@@ -1,9 +1,9 @@
 package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.BaseJunit4Test;
-import com.bapocalypse.train.model.Station;
-import com.bapocalypse.train.model.Train;
-import com.bapocalypse.train.model.TrainTime;
+import com.bapocalypse.train.po.Station;
+import com.bapocalypse.train.po.Train;
+import com.bapocalypse.train.po.TrainTime;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

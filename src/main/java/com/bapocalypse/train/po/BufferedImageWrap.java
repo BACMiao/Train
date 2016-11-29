@@ -1,9 +1,9 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import java.awt.image.BufferedImage;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/8
  * @Description: 带有标识的图片缓冲区的模型类，相当于一个画布。

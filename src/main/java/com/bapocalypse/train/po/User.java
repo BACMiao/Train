@@ -1,4 +1,4 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/10/28
  * @Description: 用户的模型类

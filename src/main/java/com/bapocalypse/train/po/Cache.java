@@ -1,10 +1,10 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/12
  * @Description:

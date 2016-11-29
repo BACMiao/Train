@@ -5,9 +5,10 @@ import com.bapocalypse.train.dto.TrickExecution;
 import com.bapocalypse.train.exception.RepeatBuyException;
 import com.bapocalypse.train.exception.TrickCloseException;
 import com.bapocalypse.train.exception.TrickException;
-import com.bapocalypse.train.model.Trick;
+import com.bapocalypse.train.po.Trick;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * @package: com.bapocalypse.train.service
@@ -16,6 +17,7 @@ import java.sql.Date;
  * @Description: 车票操作的服务接口
  */
 public interface TrickService {
+    List<Trick> findAllTricksByUid(int uid);
     /**
      * @funtion exportBuyTrickUrl
      * @Description 开始购票是输出购票接口地址，否则输出系统时间以及提示。

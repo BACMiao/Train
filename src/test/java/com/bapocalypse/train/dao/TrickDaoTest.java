@@ -1,17 +1,13 @@
 package com.bapocalypse.train.dao;
 
 import com.bapocalypse.train.BaseJunit4Test;
-import com.bapocalypse.train.model.Station;
-import com.bapocalypse.train.model.Train;
-import com.bapocalypse.train.model.Trick;
+import com.bapocalypse.train.po.Station;
+import com.bapocalypse.train.po.Trick;
 import com.bapocalypse.train.util.DateUtil;
-import com.bapocalypse.train.util.UUIDGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -56,6 +52,12 @@ public class TrickDaoTest extends BaseJunit4Test {
     public void testFindTrickByPrimary(){
         Trick trick = trickDao.findTrickByPrimary(1, "D6332", DateUtil.strToDate("2016-11-26"));
         System.out.println(trick);
+    }
+
+    @Test
+    public void testFindAllTricksByUid(){
+        List<Trick> trickList = trickDao.findAllTricksByUid(1);
+        trickList.forEach(System.out::println);
     }
 
 }

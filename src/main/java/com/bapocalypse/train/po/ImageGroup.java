@@ -1,11 +1,11 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/8
  * @Description:  小图片组的模型类，用于初始化每一组小图片

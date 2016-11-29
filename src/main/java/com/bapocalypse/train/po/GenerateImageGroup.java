@@ -1,9 +1,9 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import java.util.List;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/8
  * @Description: 生成验证码的图片组，即组成验证码的小图片

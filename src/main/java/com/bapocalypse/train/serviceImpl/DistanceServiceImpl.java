@@ -2,13 +2,12 @@ package com.bapocalypse.train.serviceImpl;
 
 import com.bapocalypse.train.dao.DistanceDao;
 import com.bapocalypse.train.dao.StationDao;
-import com.bapocalypse.train.model.Distance;
-import com.bapocalypse.train.model.DistanceCustom;
+import com.bapocalypse.train.po.Distance;
+import com.bapocalypse.train.po.DistanceCustom;
 import com.bapocalypse.train.service.DistanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

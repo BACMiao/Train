@@ -1,9 +1,9 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import java.io.Serializable;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/17
  * @Description: 两个站点之间的距离实体类

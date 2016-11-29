@@ -1,9 +1,9 @@
 package com.bapocalypse.train.util;
 
-import com.bapocalypse.train.model.BufferedImageWrap;
-import com.bapocalypse.train.model.GenerateImageGroup;
-import com.bapocalypse.train.model.ImageGroup;
-import com.bapocalypse.train.model.ImageResult;
+import com.bapocalypse.train.po.BufferedImageWrap;
+import com.bapocalypse.train.po.GenerateImageGroup;
+import com.bapocalypse.train.po.ImageGroup;
+import com.bapocalypse.train.po.ImageResult;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;

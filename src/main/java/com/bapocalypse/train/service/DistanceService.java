@@ -1,7 +1,7 @@
 package com.bapocalypse.train.service;
 
-import com.bapocalypse.train.model.Distance;
-import com.bapocalypse.train.model.DistanceCustom;
+import com.bapocalypse.train.po.Distance;
+import com.bapocalypse.train.po.DistanceCustom;
 
 import java.util.List;
 

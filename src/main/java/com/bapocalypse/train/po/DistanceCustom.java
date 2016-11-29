@@ -1,9 +1,7 @@
-package com.bapocalypse.train.model;
-
-import java.io.Serializable;
+package com.bapocalypse.train.po;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/20
  * @Description: 距离的扩展类

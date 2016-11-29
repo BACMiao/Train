@@ -1,7 +1,7 @@
 package com.bapocalypse.train.service;
 
 import com.bapocalypse.train.BaseJunit4Test;
-import com.bapocalypse.train.model.Station;
+import com.bapocalypse.train.po.Station;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

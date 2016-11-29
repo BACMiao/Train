@@ -1,11 +1,11 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.List;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/20
  * @Description: 列车的模型类

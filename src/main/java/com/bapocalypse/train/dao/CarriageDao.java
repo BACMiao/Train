@@ -1,6 +1,6 @@
 package com.bapocalypse.train.dao;
 
-import com.bapocalypse.train.model.Carriage;
+import com.bapocalypse.train.po.Carriage;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

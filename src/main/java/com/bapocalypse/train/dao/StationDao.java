@@ -1,6 +1,6 @@
 package com.bapocalypse.train.dao;
 
-import com.bapocalypse.train.model.Station;
+import com.bapocalypse.train.po.Station;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

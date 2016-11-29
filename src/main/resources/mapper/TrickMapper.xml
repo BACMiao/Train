@@ -13,4 +13,9 @@
         SELECT * FROM trick
         WHERE uid = #{uid} AND tid = #{tid} AND date = #{date}
     </select>
+    
+    <select id="findAllTricksByUid" parameterType="int" resultType="trick">
+        SELECT * FROM trick
+        WHERE uid = #{uid}
+    </select>
 </mapper>

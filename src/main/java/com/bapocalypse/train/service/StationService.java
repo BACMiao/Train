@@ -1,6 +1,6 @@
 package com.bapocalypse.train.service;
 
-import com.bapocalypse.train.model.Station;
+import com.bapocalypse.train.po.Station;
 
 import java.util.List;
 

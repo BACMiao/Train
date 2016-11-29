@@ -1,6 +1,6 @@
 package com.bapocalypse.train.dao;
 
-import com.bapocalypse.train.model.Train;
+import com.bapocalypse.train.po.Train;
 import org.springframework.stereotype.Repository;
 
 /**

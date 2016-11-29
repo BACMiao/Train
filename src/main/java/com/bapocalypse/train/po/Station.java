@@ -1,9 +1,9 @@
-package com.bapocalypse.train.model;
+package com.bapocalypse.train.po;
 
 import java.io.Serializable;
 
 /**
- * @package: com.bapocalypse.train.model
+ * @package: com.bapocalypse.train.po
  * @Author: 陈淼
  * @Date: 2016/11/14
  * @Description: 车站的模型类

@@ -1,7 +1,7 @@
 package com.bapocalypse.train.dto;
 
 import com.bapocalypse.train.enums.BuyTrickStateEnum;
-import com.bapocalypse.train.model.Trick;
+import com.bapocalypse.train.po.Trick;
 
 import java.sql.Date;
 
@@ -71,5 +71,16 @@ public class TrickExecution {
 
     public void setTrick(Trick trick) {
         this.trick = trick;
+    }
+
+    @Override
+    public String toString() {
+        return "TrickExecution{" +
+                "tid='" + tid + '\'' +
+                ", date=" + date +
+                ", state=" + state +
+                ", stateInfo='" + stateInfo + '\'' +
+                ", trick=" + trick +
+                '}';
     }
 }

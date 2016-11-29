@@ -1,7 +1,7 @@
 package com.bapocalypse.train.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.bapocalypse.train.model.Station;
+import com.bapocalypse.train.po.Station;
 import com.bapocalypse.train.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -78,4 +78,15 @@ public class Exporser {
     public void setNow(long now) {
         this.now = now;
     }
+
+    @Override
+    public String toString() {
+        return "Exporser{" +
+                "exposed=" + exposed +
+                ", md5='" + md5 + '\'' +
+                ", tid='" + tid + '\'' +
+                ", date=" + date +
+                ", now=" + now +
+                '}';
+    }
 }

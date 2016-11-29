@@ -1,6 +1,6 @@
 package com.bapocalypse.train.service;
 
-import com.bapocalypse.train.model.User;
+import com.bapocalypse.train.po.User;
 
 /**
  * @package: com.bapocalypse.train.service

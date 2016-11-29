@@ -8,17 +8,17 @@
     <cache />
 
     <!-- 查询列车及所经过的车站 -->
-    <resultMap id="TrainAndTrainTimeResultMap" type="com.bapocalypse.train.model.Train">
+    <resultMap id="TrainAndTrainTimeResultMap" type="com.bapocalypse.train.po.Train">
         <!-- 列车信息 -->
         <id column="tid" property="tid"/>
 
         <!-- 站点信息，一个列车对应到个时刻，使用collection -->
-        <collection property="trainTimeList" ofType="com.bapocalypse.train.model.TrainTime">
+        <collection property="trainTimeList" ofType="com.bapocalypse.train.po.TrainTime">
             <result column="arriveTime" property="arriveTime"/>
             <result column="departTime" property="departTime"/>
 
             <!-- 一个时刻表对应一个站点 -->
-            <association property="station" javaType="com.bapocalypse.train.model.Station">
+            <association property="station" javaType="com.bapocalypse.train.po.Station">
                 <result column="sname" property="sname"/>
             </association>
         </collection>

@@ -8,8 +8,8 @@ import com.bapocalypse.train.enums.BuyTrickStateEnum;
 import com.bapocalypse.train.exception.RepeatBuyException;
 import com.bapocalypse.train.exception.TrickCloseException;
 import com.bapocalypse.train.exception.TrickException;
-import com.bapocalypse.train.model.Train;
-import com.bapocalypse.train.model.Trick;
+import com.bapocalypse.train.po.TrainDate;
+import com.bapocalypse.train.po.Trick;
 import com.bapocalypse.train.service.TrickService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,13 +28,18 @@ import java.util.List;
  */
 @Service
 public class TrickServiceImpl implements TrickService {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private TrickDao trickDao;
     private TrainDateDao trainDateDao;
 
     @Override
+    public List<Trick> findAllTricksByUid(int uid) {
+        return trickDao.findAllTricksByUid(uid);
+    }
+
+    @Override
     public Exporser exportBuyTrickUrl(String tid, Date date) {
-        List<Train> trainList = trainDateDao.findAllTrainsByDate(date);
+        List<TrainDate> trainList = trainDateDao.findAllTrainsByDate(date);
         if (trainList.size() < 1) {
             return new Exporser(false, date);
         }
@@ -67,7 +72,7 @@ public class TrickServiceImpl implements TrickService {
     @Override
     public TrickExecution executeBuyTrick(Trick trick, String level, String md5)
             throws TrickException, RepeatBuyException, TrickCloseException {
-        if (md5 == null || md5.equals(getMD5(trick.getTid(), trick.getDate()))) {
+        if (md5 == null || !md5.equals(getMD5(trick.getTid(), trick.getDate()))) {
             throw new TrickException("buy trick date rewrite");
         }
         //执行购票逻辑，减票数+记录购买行为
