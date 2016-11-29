@@ -2,7 +2,7 @@ package com.bapocalypse.train.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bapocalypse.train.po.Cache;
-import com.bapocalypse.train.util.Image;
+import com.bapocalypse.train.util.ImageUtil;
 import com.bapocalypse.train.po.ImageResult;
 import com.bapocalypse.train.po.User;
 import com.bapocalypse.train.service.UserService;
@@ -125,7 +125,7 @@ public class UserController {
     @ResponseBody
     String identify(HttpServletRequest request, HttpServletResponse response) throws Exception {
         JSONObject imageJson = new JSONObject();
-        ImageResult ir = Image.generateImage(request);
+        ImageResult ir = ImageUtil.generateImage(request);
         imageJson.put("file", ir.getName());
         imageJson.put("tip", ir.getTip());
         Cache.put(ir.getUniqueKey(), ir);

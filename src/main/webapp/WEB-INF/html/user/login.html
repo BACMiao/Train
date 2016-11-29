@@ -7,7 +7,7 @@
     <script type="text/javascript">
         $(function(){
             url = "/user/identify";
-            $.getJSON(url,function(image){
+            $.get(url,function(image){
                 $('#tip').each(function () {
                     var tip = image.tip;
                     $(this).html(tip);
@@ -18,6 +18,19 @@
                 });
             });
         });
+        function refurbish () {
+            url = "/user/identify";
+            $.get(url,function(image){
+                $('#tip').each(function () {
+                    var tip = image.tip;
+                    $(this).html(tip);
+                });
+                $('#imageFile').each(function () {
+                    var fileName = image.file;
+                    $(this).attr('src','/resources/targetImage/'+fileName);
+                });
+            });
+        }
         var index = 1;
         function addImg(e){
             var parentDiv = document.getElementById("insert");
@@ -79,8 +92,6 @@
             document.getElementById('location').value = result.substr(0, result.length-1);
             document.getElementById('loginForm').submit();
         }
-
-
     </script>
 </head>
 <body>
@@ -91,7 +102,7 @@
     密码：<input type="password" name="password" />
     验证码：
     <div id="insert">
-        选出图片中的"<span id="tip"></span>"：<br>
+        选出图片中的"<span id="tip"></span>"：<span onclick="refurbish()">刷新</span><br>
         <img id="imageFile" src="" height="150" width="300" onclick="addImg()">
     </div>
     <input type="submit" value="登陆" onclick="login()">

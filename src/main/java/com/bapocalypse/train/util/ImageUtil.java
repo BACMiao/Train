@@ -18,7 +18,7 @@ import java.util.*;
  * @Date: 2016/11/8
  * @Description: 将八张小图片合起来生成验证码图片的工具类
  */
-public class Image {
+public class ImageUtil {
     //小图片实物名字和图片组对象的映射关系
     private static Map<String, ImageGroup> imageGroupMap = new HashMap<>();
     //小图片数量和实物名字、图片组对象的映射关系
@@ -276,4 +276,6 @@ public class Image {
         }
         return num;
     }
+
+
 }
