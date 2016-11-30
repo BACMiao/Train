@@ -45,4 +45,10 @@
         WHERE sid = #{sid1} AND traintime.tid IN
         (SELECT traintime.tid FROM traintime WHERE sid = #{sid2});
     </select>
+    
+    <select id="getStartTimeBySidAndTid" resultType="string">
+        SELECT traintime.arriveTime
+        FROM traintime
+        WHERE sid = #{sid} AND tid = #{tid};
+    </select>
 </mapper>

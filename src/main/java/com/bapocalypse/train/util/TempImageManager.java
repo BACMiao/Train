@@ -22,7 +22,6 @@ public class TempImageManager implements Runnable {
         try {
             prop.load(inStrem);
             RETENTION_TIME = prop.getProperty("file_retention_time");
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -34,16 +33,14 @@ public class TempImageManager implements Runnable {
         }
     }
 
-    public TempImageManager(String path) {
+    TempImageManager(String path) {
         this.path = path;
-        System.out.println("path____________________" + path);
     }
 
     @Override
     public void run() {
         System.out.println("文件管理开始=========");
-        path = path + "exportExcel";
-        System.out.println("path?????" + path);
+        path = path + "resources" + File.separator + "targetImage";
         File file = new File(path);
         deletefiles(file);
     }

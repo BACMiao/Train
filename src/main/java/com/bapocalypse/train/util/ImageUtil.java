@@ -276,6 +276,4 @@ public class ImageUtil {
         }
         return num;
     }
-
-
 }

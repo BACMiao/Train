@@ -26,13 +26,13 @@ public class TimeListener implements ServletContextListener {
         servletContextEvent.getServletContext().log("定时器已启动");
         // 设置在每晚24:00:00执行任务
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 24);    //24时
-        calendar.set(Calendar.MINUTE, 00);          //00分
+        calendar.set(Calendar.HOUR_OF_DAY, 23);    //24时
+        calendar.set(Calendar.MINUTE, 53);          //00分
         calendar.set(Calendar.SECOND, 0);          //00秒
         Date date = calendar.getTime();
         // 监听器获取网站的根目录
         String path = servletContextEvent.getServletContext().getRealPath("/");
-        timer.schedule(new SystemTask(path), date);     //TODO
+        timer.schedule(new SystemTask(path), date);
         servletContextEvent.getServletContext().log("已经添加任务调度表");
     }
 
