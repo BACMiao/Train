@@ -26,10 +26,5 @@ public class TrainTimeServiceTest extends BaseJunit4Test {
         Assert.assertNotNull(trainTimeService);
     }
 
-    @Test
-    public void findTrainByStartSidAndEndSid() throws Exception {
-        List<Train> list = trainTimeService.findTrainByStartSidAndEndSid(6, 1);
-        list.forEach(System.out::println);
-    }
 
 }

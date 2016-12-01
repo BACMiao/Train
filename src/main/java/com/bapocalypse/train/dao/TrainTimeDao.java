@@ -17,7 +17,7 @@ import java.util.Map;
  */
 @Repository
 public interface TrainTimeDao {
-    List<TrainTime> findAllTime() throws Exception;
+    List<TrainTime> findAllTimeByTid(String tid) throws Exception;
     List<Train> findTrainAndTrainTime() throws Exception;
     List<Train> findTrainByStartSidAndEndSid(Map<String, Integer> map);
     String getStartTimeBySidAndTid(@Param("sid") int sid, @Param("tid") String tid);

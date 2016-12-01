@@ -24,8 +24,8 @@
         </collection>
     </resultMap>
 
-    <select id="findAllTime" resultType="trainTime">
-        SELECT * FROM traintime
+    <select id="findAllTimeByTid" parameterType="String" resultType="trainTime">
+        SELECT * FROM traintime WHERE tid = #{tid}
     </select>
 
     <!-- 查询列车及所经过的车站 -->

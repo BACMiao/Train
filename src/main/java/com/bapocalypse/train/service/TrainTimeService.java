@@ -1,6 +1,7 @@
 package com.bapocalypse.train.service;
 
 import com.bapocalypse.train.po.Train;
+import com.bapocalypse.train.po.TrainTime;
 
 import java.util.List;
 
@@ -11,5 +12,5 @@ import java.util.List;
  * @Description: 列车时刻的服务接口
  */
 public interface TrainTimeService {
-    List<Train> findTrainByStartSidAndEndSid(Integer sid1, Integer sid2) throws Exception;
+    List<TrainTime> findAllTimeByTid(String tid) throws Exception;
 }

@@ -29,7 +29,7 @@ public class TrainTimeDaoTest extends BaseJunit4Test {
 
     @Test
     public void testFindAllTime() throws Exception {
-        List<TrainTime> trainTimeList = trainTimeDao.findAllTime();
+        List<TrainTime> trainTimeList = trainTimeDao.findAllTimeByTid("D6332");
         //lambda表达式
         trainTimeList.forEach(System.out::println);
     }
